@@ -9,17 +9,17 @@
 </head>
 <body>
     <?php 
-        $name = "Dark Matter";
-        $read = true;
-        if ($read) {
-            $message = "You have read $name";
-        }
-        else {
-            $message = "You havn't read $name.";
-        }
+        $books = [
+            "Do Androids Dream of Electric Sheep",
+            "The Langoliers",
+            "Hail Mary"
+        ];
     ?>
-    <h1>
-        <?= $message?>
-    </h1>
+    <h1>Recommended Book</h1>
+    <ul>
+        <?php foreach($books as $book) :?>
+            <li><?php echo $book; ?></li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
