@@ -1,2 +1,3 @@
 <?php
-    require "contact.view.php";
+    $heading = "Contact Us";
+    require "views/contact.view.php";

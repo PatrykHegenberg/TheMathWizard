@@ -1,2 +1,3 @@
 <?php
-    require "mission.view.php";
+    $heading = "Mission";
+    require "views/mission.view.php";
