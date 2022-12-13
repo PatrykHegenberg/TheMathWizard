@@ -1,26 +1,18 @@
 <?php
 require 'functions.php';
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-$routes = [
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/contact' => 'controllers/contact.php',
-    '/mission' => 'controllers/mission.php',
-];
+//require 'router.php';
+// connect to MySQL database.
+$dsn = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
+$username = 'appUser';
+$password = 'password';
+$pdo = new PDO($dsn, $username, $password);
 
-function routeToController($uri, $routes) {
-    if (array_key_exists($uri, $routes)) {
-        require $routes[$uri];
-    } else {
-        abort();
-    }
-}
+$statement = $pdo->prepare("SELECT * FROM posts");
+$statement->execute();
 
-routeToController($uri, $routes);
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-function abort($code = 404) {
-    http_response_code($code);
-    require "views/{$code}.php";
-    die();
+foreach ($posts as $post) {
+    echo "<li>" . $post['title'] . "</li>";
 }
