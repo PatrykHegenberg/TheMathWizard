@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 require 'Database.php';
-//require 'router.php';
+require 'router.php';
 $username = 'appUser';
 $password = 'password';
 $config = require('config.php');
