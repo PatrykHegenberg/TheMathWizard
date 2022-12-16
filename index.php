@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 require 'Database.php';
-//require 'router.php';
+require 'router.php';
 $username = 'appUser';
 $password = 'password';
 $config = require('config.php');
@@ -16,4 +16,4 @@ $posts = $db->query($query, [$id])->fetchAll(PDO::FETCH_ASSOC);
 // Beide Varianten machen inhaltlich das Gleiche.
 // freie Wahl, welche der beiden Varianten bevorzugt wird.
 
-dd($posts);
+//dd($posts);
