@@ -5,10 +5,11 @@ $routes = [
     '/' => 'controllers/index.php',
     '/about' => 'controllers/about.php',
     '/contact' => 'controllers/contact.php',
-    '/mission' => 'controllers/mission.php',
+    '/learn' => 'controllers/learn.php',
     '/mathe' => 'controllers/mathe.php',
     '/note' => 'controllers/note.php',
-    '/notes' => 'controllers/notes.php'
+    '/notes' => 'controllers/notes.php',
+    '/addition' => 'controllers/addition.php'
 ];
 
 function routeToController($uri, $routes) {
