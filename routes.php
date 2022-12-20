@@ -5,8 +5,8 @@ return[
     '/contact' => 'controllers/contact.php',
     '/learn' => 'controllers/learn.php',
     '/mathe' => 'controllers/mathe.php',
-    '/note' => 'controllers/note.php',
-    '/notes' => 'controllers/notes.php',
+    '/note' => 'controllers/notes/show.php',
+    '/notes' => 'controllers/notes/index.php',
     '/addition' => 'controllers/addition.php',
-    '/notes/create' => 'controllers/note-create.php'
+    '/notes/create' => 'controllers/notes/create.php'
 ];
