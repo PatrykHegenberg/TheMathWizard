@@ -1,27 +1,6 @@
-<?php require ('partials/head.php') ?>
-<?php require ('partials/nav.php') ?>
+<?php require('partials/head.php') ?>
+<?php require('partials/nav.php') ?>
 <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<!--
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
 <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8 nes-container">
     <div>
@@ -31,6 +10,7 @@
         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">registriere dich noch Heute</a>
       </p>
     </div>
+
     <form class="mt-8 space-y-6" action="#" method="POST">
       <input type="hidden" name="remember" value="true">
       <div class="-space-y-px rounded-md shadow-sm">
@@ -44,15 +24,19 @@
         </div>
       </div>
 
-<div class="flex items-center justify-between">
+      <div class="flex items-center justify-between">
         <div class="flex items-center">
+
           <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-<label for="remember-me" class="ml-2 block text-sm text-gray-900">Angemeldet bleiben</label>
+          <label for="remember-me" class="ml-2 block text-sm text-gray-900">Angemeldet bleiben
+            <input id="remember-me" name="remember-me" type="checkbox" class="nes-checkbox" />
+          </label>
         </div>
 
         <div class="text-sm">
           <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Passwort vergessen?</a>
         </div>
+
       </div>
 
       <div>
@@ -65,5 +49,42 @@
     </form>
   </div>
 </div>
-
-<?php require ('partials/footer.php') ?>
+-->
+<div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="w-full max-w-md space-y-8 nes-container">
+<form action="#" method="POST">
+  <div>
+    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Melde dich mit deinem Konto an.</h2>
+    <p class="mt-2 text-center text-sm text-gray-600">
+      Oder
+      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">registriere dich noch Heute</a>
+    </p>
+  </div> 
+  <div class="nes-field">
+    <!--<label for="name_field">Email-Adresses</label>-->
+    <input type="text" class="nes-input" placeholder="Email-Adresses">
+  </div>
+  <div class="nes-field">
+    <!--<label for="name_field">Passwort</label>-->
+    <input type="text" class="nes-input" placeholder="Passwort">
+  </div>
+  <div class="flex items-center justify-between">
+    <label class="flex items-center justify-between">
+      <input type="checkbox" class="nes-checkbox" />
+      <span>Angemeldet bleiben</span>
+    </label>
+    <div class="text-sm">
+      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Passwort vergessen?</a>
+    </div> 
+  </div>
+ <div>
+    <button type="submit" class="nes-btn is-primary">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+      </span>
+        Anmelden
+    </button>
+  </div> 
+</form>
+</div>
+</div>
+<?php require('partials/footer.php') ?>
