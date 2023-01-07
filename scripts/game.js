@@ -478,8 +478,8 @@
 
     path.shift();
     if (path.length <= 1) {
-      //Game.playerAllowedToMove = false;
-      //Game.engine.lock();
+      Game.playerAllowedToMove = false;
+      Game.engine.lock();
       combat(m, p);
     } else {
       drawTile(Game, m._x + "," + m._y, m);
@@ -618,6 +618,8 @@
     checkDeath(hitter);
     showScreen("game");
     renderStats(Game.player.stats);
+    Game.playerAllowedToMove = true;
+    Game.engine.unlock();
   }
 
   // this gets called when the player wins the game
