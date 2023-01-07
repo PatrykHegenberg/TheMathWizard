@@ -11,7 +11,7 @@
   // It's the "microrogue" tileset
 
   const tileSet = document.createElement("img");
-  tileSet.src = "colored_tilemap_packed.png";
+  tileSet.src = "./../images/colored_tilemap_packed.png";
 
   const tileOptions = {
     layout: "tile",

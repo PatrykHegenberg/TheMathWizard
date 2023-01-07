@@ -29,19 +29,14 @@
           </button>
         </div>
         <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
-              <a href="/" class="<?= urlIs('/') ?> font-semibold text-gray-900 hover:text-gray-900">Home</a>
-
-          <a href="/about" class="<?= urlIs('/about') ?>font-semibold text-gray-900 hover:text-gray-900">About</a>
-
-          <a href="/contact" class="<?= urlIs('/contact') ?>font-semibold text-gray-900 hover:text-gray-900">Contact</a>
-
-          <a href="/learn" class="<?= urlIs('/learn') ?>font-semibold text-gray-900 hover:text-gray-900">Learn</a>
+          <a href="/" class="<?= urlIs('/') ?> font-semibold text-gray-900 hover:text-gray-900">Home</a>
+          <a href="/learn" class="<?= urlIs('/learn') ?>font-semibold text-gray-900 hover:text-gray-900">Lernen</a>
           <a href="/mathe" class="<?= urlIs('/mathe') ?>font-semibold text-gray-900 hover:text-gray-900">Mathe</a>
           <a href="/game" class="<?= urlIs('/game') ?>font-semibold text-gray-900 hover:text-gray-900">Game</a>
         </div>
         <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-          <a href="/login" class="<?= urlIs('/login') ?> nes-btn">Log in</a>
-          <a href="/register" class="<?= urlIs('/register') ?>nes-btn">Registrieren</a>
+          <a href="/login" class="<?= urlIs('/login') ?> nes-btn">Anmelden</a>
+          <a href="/register" class="<?= urlIs('/register') ?> nes-btn">Registrieren</a>
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -67,18 +62,14 @@
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-              <a href="/" class="<?= urlIs('/') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Home</a>
+                <a href="/" class="<?= urlIs('/') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Home</a>
 
-              <a href="/about" class="<?= urlIs('/about') ?>-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">About</a>
-
-              <a href="/contact" class="<?= urlIs('/contact') ?>-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Contact</a>
-
-              <a href="/learn" class="<?= urlIs('/learn') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Learn</a>
-              <a href="/mathe" class="<?= urlIs('/mathe') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Learn</a>
-              <a href="/game" class="<?= urlIs('/game') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Learn</a>
+                <a href="/learn" class="<?= urlIs('/learn') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Lernen</a>
+                <a href="/mathe" class="<?= urlIs('/mathe') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Mathe</a>
+                <a href="/game" class="<?= urlIs('/game') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Game</a>
               </div>
               <div class="py-6">
-                <a href="/login" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Log in</a>
+                <a href="/login" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Anmelden</a>
                 <a href="/register" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Registrieren</a>
               </div>
             </div>
@@ -88,6 +79,3 @@
     </div>
   </div>
 </div>
-
-
-
