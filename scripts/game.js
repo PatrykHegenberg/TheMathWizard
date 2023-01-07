@@ -1,5 +1,6 @@
 (function (w) {
   let count = 1;
+  let clickCount = 0;
   // game title
   const gametitle = "The Math Wizard";
 
@@ -477,8 +478,8 @@
 
     path.shift();
     if (path.length <= 1) {
-      Game.playerAllowedToMove = false;
-      Game.engine.lock();
+      //Game.playerAllowedToMove = false;
+      //Game.engine.lock();
       combat(m, p);
     } else {
       drawTile(Game, m._x + "," + m._y, m);
@@ -539,9 +540,9 @@
       sfx["hit"].play();
       if (checkDeath(hitter)) {
         Game.player.stats.xp += 1;
-        showScreen("game");
-        Game.playerAllowedToMove = true;
-        Game.engine.unlock();
+        //showScreen("game");
+        //Game.playerAllowedToMove = true;
+        //Game.engine.unlock();
       } else {
         combat(hitter, receiver);
       }
@@ -585,12 +586,18 @@
     }
     document.getElementById("answer1").addEventListener("click", async() => {
       checkSolution(document.getElementById("answer1").innerText, answerValue, hitter, receiver);
+      clickCount += 1;
+      console.log(clickCount);
     }, {once: true});
     document.getElementById("answer2").addEventListener("click", async() => {
       checkSolution(document.getElementById("answer2").innerText, answerValue, hitter, receiver);
+      clickCount += 1;
+      console.log(clickCount);
     }, {once: true});
     document.getElementById("answer3").addEventListener("click", async() => {
       checkSolution(document.getElementById("answer3").innerText, answerValue, hitter, receiver);
+      clickCount += 1;
+      console.log(clickCount);
     }, {once: true});
   }
 
@@ -599,9 +606,11 @@
       Math.floor(Math.random() * (max - min)) + min;
     let [num1, num2] = [randomValue(1, 10), randomValue(1, 10)];
     const answerValue = eval(`${num1} * ${num2}`);
-    document.getElementById("question").innerHTML = `${num1} * ${num2} = ? `;
-    setupButtons(answerValue, hitter, receiver);
-    showScreen("combat");
+    test = prompt(`${num1} * ${num2} = ?`);
+    checkSolution(test, answerValue, hitter, receiver);
+    //document.getElementById("question").innerHTML = `${num1} * ${num2} = ? `;
+    //setupButtons(answerValue, hitter, receiver);
+    //showScreen("combat");
     checkDeath(receiver);
     renderStats(Game.player.stats);
   }
