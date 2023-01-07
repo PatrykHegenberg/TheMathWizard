@@ -533,29 +533,16 @@
    *** combat/win/lose events ***
    ******************************/
   // this is how the player fights a monster
-  function checkSolution(solution, answer, hitter, receiver) {
+  function checkSolution(solution, answer) {
     console.log("Click: " + solution + " Antwort: " + answer);
     if (solution == answer) {
-      hitter.stats.hp -= 1;
-      sfx["hit"].play();
-      if (checkDeath(hitter)) {
-        Game.player.stats.xp += 1;
-        //showScreen("game");
-        //Game.playerAllowedToMove = true;
-        //Game.engine.unlock();
-      } else {
-        combat(hitter, receiver);
-      }
-      checkDeath(hitter);
+      return true;
     } else {
-      sfx["miss"].play();
-      //showScreen("game");
-      //Game.playerAllowedToMove = true;
-      //Game.engine.unlock();
+      return false;
     }
   }
 
-  function setupButtons(answerValue, hitter, receiver) {
+   async function setupButtons(answerValue) {
     const randomValue = (min, max) =>
       Math.floor(Math.random() * (max - min)) + min;
     let randomVar = randomValue(1, 4);
@@ -584,34 +571,52 @@
       }`;
       document.getElementById("answer3").innerHTML = `${answerValue}`;
     }
-    document.getElementById("answer1").addEventListener("click", async() => {
-      checkSolution(document.getElementById("answer1").innerText, answerValue, hitter, receiver);
-      clickCount += 1;
-      console.log(clickCount);
-    }, {once: true});
-    document.getElementById("answer2").addEventListener("click", async() => {
-      checkSolution(document.getElementById("answer2").innerText, answerValue, hitter, receiver);
-      clickCount += 1;
-      console.log(clickCount);
-    }, {once: true});
-    document.getElementById("answer3").addEventListener("click", async() => {
-      checkSolution(document.getElementById("answer3").innerText, answerValue, hitter, receiver);
-      clickCount += 1;
-      console.log(clickCount);
-    }, {once: true});
+    showScreen("combat");
+    return new Promise((resolve) => {
+      const button1 = document.getElementById("answer1");
+      const button2 = document.getElementById("answer2");
+      const button3 = document.getElementById("answer3");
+      button1.addEventListener('click', () => {
+        resolve(button1.innerText);
+      });
+      button2.addEventListener('click', () => {
+        resolve(button2.innerText);
+      });
+      button3.addEventListener('click', () => {
+        resolve(button3.innerText);
+      });
+    });
   }
 
-  function combat(hitter, receiver) {
+  async function combat(hitter, receiver) {
+    console.log("hitter: " + hitter.name);
+    console.log("receiver: " + receiver.name);
+    console.log(hitter.stats.hp);
+    let msg = [];
     const randomValue = (min, max) =>
       Math.floor(Math.random() * (max - min)) + min;
     let [num1, num2] = [randomValue(1, 10), randomValue(1, 10)];
     const answerValue = eval(`${num1} * ${num2}`);
-    test = prompt(`${num1} * ${num2} = ?`);
-    checkSolution(test, answerValue, hitter, receiver);
-    //document.getElementById("question").innerHTML = `${num1} * ${num2} = ? `;
-    //setupButtons(answerValue, hitter, receiver);
-    //showScreen("combat");
-    checkDeath(receiver);
+    document.getElementById("question").innerHTML = `${num1} * ${num2} = ? `;
+    const clicked = await setupButtons(answerValue);
+    let fight = checkSolution(clicked, answerValue);
+    if(fight) {
+      console.log(fight);
+      msg.push("You hit the monster");
+      hitter.stats.hp -= 1;
+      sfx["hit"].play();
+      Game.player.stats.xp += 1;
+    } else {
+      console.log(false);
+      sfx["miss"].play();
+      msg.push("The monster hit you.");
+      Game.player.stats.hp -= 1;
+    }
+    if(msg) {
+      toast(battleMessage(msg));
+    }
+    checkDeath(hitter);
+    showScreen("game");
     renderStats(Game.player.stats);
   }
 
