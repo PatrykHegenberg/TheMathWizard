@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="nes-container with-title flex-col mt-10 space-y-4">
+    <div class="nes-container with-title mt-10 space-y-4">
       <span class="title">Dein Fortschritt <?php $_SESSION['xp'] ?> </span>
       
       <span>Du bist aktuell Level: <?php echo $_SESSION['level'] ?> </span>
