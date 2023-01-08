@@ -8,5 +8,6 @@ return[
     '/login' => 'controllers/login.php',
     '/register' => 'controllers/register.php',
     '/profile' => 'controllers/profile.php',
-    '/logout' => 'controllers/logout.php'
+    '/logout' => 'controllers/logout.php',
+    '/delete' => 'controllers/delete.php'
 ];

@@ -14,8 +14,11 @@ if (isset($_POST["submit"])) {
     if (password_verify($_POST['password'], $stmt["password"])) {
       session_start();
       $_SESSION["username"] = $stmt['username'];
-      //require "views/profile.php";
-      //urlIs("/profile");
+      $_SESSION["level"] = $stmt['level'];
+      $_SESSION["xp"] = $stmt['xp'];
+      $_SESSION["coins"] = $stmt['coins'];
+      $_SESSION["lesson_count"] = $stmt['lesson_count'];
+
       header("Location: /profile");
     } else {
       echo "Anmeldung fehlgeschlagen!";

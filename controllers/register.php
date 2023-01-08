@@ -16,17 +16,19 @@
     //Username ist frei
       //User anlegen
         $hash = password_hash($_POST["Passwort"], PASSWORD_BCRYPT);
-        $db->query("INSERT INTO user (username, vorname, nachname, email, password, level, xp, coins) VALUES (
-          :username, :vorname, :nachname, :email, :password, :level, :xp, :coins )", [
+        $db->query("INSERT INTO user (username, vorname, nachname, email, password, lesson_count, level, xp, coins) VALUES (
+          :username, :vorname, :nachname, :email, :password, :lesson_count, :level, :xp, :coins )", [
             'username' => $_POST['Username'],
             'vorname' => $_POST['Vorname'],
             'nachname' => $_POST['Nachname'],
             'email' => $_POST['Email-Adresse'],
             'password' => $hash,
+            'lesson_count' => 0,
             'level' => 1,
             'xp' => 0,
             'coins' => 0
           ]);
+        header("Location: /login");
       } else {
         echo "Die Passwörter stimmen nicht überein";
       }
