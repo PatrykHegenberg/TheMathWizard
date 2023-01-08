@@ -1,3 +1,4 @@
 <?php
-    $heading = "Home";
+$heading = "Home";
+session_start();
     require "views/index.view.php";
