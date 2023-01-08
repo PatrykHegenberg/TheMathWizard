@@ -12,7 +12,7 @@
             <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Automatisiere spielerisch das 1x1</h1>
             <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Zeige was du kannst und kämpfe dich durch denn Dungeon.</p>
             <div class="mt-8 flex gap-x-4 sm:justify-center">
-<a href="/login" class="<?= urlIs("/login") ?> nes-btn is-primary">
+              <a href="/login" class="<?= urlIs("/login") ?> nes-btn is-primary">
                 Los geht's
                 <span class="text-indigo-200" aria-hidden="true">&rarr;</span>
               </a>

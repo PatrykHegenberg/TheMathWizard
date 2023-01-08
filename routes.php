@@ -5,5 +5,8 @@ return[
     '/mathe' => 'controllers/mathe.php',
     '/game' => 'controllers/game.php',
     '/addition' => 'controllers/addition.php',
-    '/login' => 'controllers/login.php'
+    '/login' => 'controllers/login.php',
+    '/register' => 'controllers/register.php',
+    '/profile' => 'controllers/profile.php',
+    '/logout' => 'controllers/logout.php'
 ];

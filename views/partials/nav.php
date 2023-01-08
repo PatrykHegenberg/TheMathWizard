@@ -29,14 +29,14 @@
           </button>
         </div>
         <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
-          <a href="/" class="<?= urlIs('/') ?> font-semibold text-gray-900 hover:text-gray-900">Home</a>
-          <a href="/learn" class="<?= urlIs('/learn') ?>font-semibold text-gray-900 hover:text-gray-900">Lernen</a>
-          <a href="/mathe" class="<?= urlIs('/mathe') ?>font-semibold text-gray-900 hover:text-gray-900">Mathe</a>
-          <a href="/game" class="<?= urlIs('/game') ?>font-semibold text-gray-900 hover:text-gray-900">Game</a>
+          <a href="/" class="<?= urlIs('/') ?> text-sm font-semibold text-gray-900 hover:text-gray-900">Home</a>
+          <a href="/learn" class="<?= urlIs('/learn') ?> text-sm font-semibold text-gray-900 hover:text-gray-900">Lernen</a>
+          <a href="/mathe" class="<?= urlIs('/mathe') ?> text-sm font-semibold text-gray-900 hover:text-gray-900">Mathe</a>
+          <a href="/game" class="<?= urlIs('/game') ?> text-sm font-semibold text-gray-900 hover:text-gray-900">Game</a>
         </div>
         <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-          <a href="/login" class="<?= urlIs('/login') ?> nes-btn">Anmelden</a>
-          <a href="/register" class="<?= urlIs('/register') ?> nes-btn">Registrieren</a>
+          <a href="/login" class="<?= urlIs('/login') ?> nes-btn text-sm">Anmelden</a>
+          <a href="/register" class="<?= urlIs('/register') ?> nes-btn text-sm">Registrieren</a>
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -44,14 +44,14 @@
         <div focus="true" class="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
           <div class="flex h-9 items-center justify-between">
             <div class="flex">
-              <a href="#" class="-m-1.5 p-1.5">
-                <span class="sr-only">Your Company</span>
+              <a href="/" class="<?= urlIs('/') ?> -m-1.5 p-1.5">
+                <span class="sr-only">The Math Wizard</span>
                 <img class="h-8" src="./../../images/icon.png" alt="">
               </a>
             </div>
             <div class="flex">
               <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                <span class="sr-only">Close menu</span>
+                <span class="sr-only">Schließen</span>
                 <!-- Heroicon name: outline/x-mark -->
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -62,15 +62,14 @@
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="/" class="<?= urlIs('/') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Home</a>
-
-                <a href="/learn" class="<?= urlIs('/learn') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Lernen</a>
-                <a href="/mathe" class="<?= urlIs('/mathe') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Mathe</a>
-                <a href="/game" class="<?= urlIs('/game') ?> -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Game</a>
+                <a href="/" class="<?= urlIs('/') ?> text-sm -mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Home</a>
+                <a href="/learn" class="<?= urlIs('/learn') ?> text-sm -mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Lernen</a>
+                <a href="/mathe" class="<?= urlIs('/mathe') ?> text-sm -mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Mathe</a>
+                <a href="/game" class="<?= urlIs('/game') ?> text-sm -mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Game</a>
               </div>
               <div class="py-6">
-                <a href="/login" class="<?= urlIs('/login') ?> -mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Anmelden</a>
-                <a href="/register" class="<?= urlIs('/register') ?> -mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Registrieren</a>
+                <a href="/login" class="<?= urlIs('/login') ?> text-sm -mx-3 block rounded-lg py-2.5 px-3 font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Anmelden</a>
+                <a href="/register" class="<?= urlIs('/register') ?> text-sm -mx-3 block rounded-lg py-2.5 px-3 font-semibold leading-6 text-gray-900 hover:bg-gray-400/10">Registrieren</a>
               </div>
             </div>
           </div>
