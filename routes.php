@@ -9,5 +9,6 @@ return[
     '/register' => 'controllers/register.php',
     '/profile' => 'controllers/profile.php',
     '/logout' => 'controllers/logout.php',
-    '/delete' => 'controllers/delete.php'
+    '/delete' => 'controllers/delete.php',
+    '/updateData' => 'controllers/updateData.php'
 ];

@@ -8,7 +8,7 @@
         <section class="message -left flex space-x-10">
           <i class="nes-bcrikko mr-10"></i>
           <div class="nes-balloon from-left mx-10">
-            <p>Hallo <?= $_SESSION['username'] ?> schön das du da bist.</p>
+            <p>Hallo <?= $stats['username'] ?> schön das du da bist.</p>
           </div>
         </section>
       </section>
@@ -23,20 +23,19 @@
       </div>
     </div>
     <div class="nes-container with-title mt-10 space-y-4">
-      <span class="title">Dein Fortschritt <?php $_SESSION['xp'] ?> </span>
-      
-      <span>Du bist aktuell Level: <?php echo $_SESSION['level'] ?> </span>
+      <span class="title">Dein Fortschritt</span>
+      <span>Du bist aktuell Level: <?php echo $stats['level'] ?> </span>
       <br>
       <span>Deine Erfahrungspunkte</span>
-      <progress class="nes-progress is-primary" value="<?php echo $_SESSION['xp'] ?>" max="150">Erfahrung</progress>
+      <progress class="nes-progress is-primary" value="<?php echo $stats['xp'] ?>" max="150">Erfahrung</progress>
       <span>Dein aktueller Lernfortschritt</span>
-      <progress class="nes-progress is-success" value="<?php echo $_SESSION['lesson_count'] ?>" max="10">Absolvierte Lektionen</progress>
+      <progress class="nes-progress is-success" value="<?php echo $stats['lesson_count'] ?>" max="10">Absolvierte Lektionen</progress>
       <div class="flex flex-rows justify-center">
         <div>
           <span><i class="nes-icon coin is-medium"></i></span>
         </div>
         <div>
-          <p><?php echo $_SESSION['coins'] ?></p>
+          <p><?php echo $stats['coins'] ?></p>
         </div>
       </div>
     </div>

@@ -1,4 +1,11 @@
 (function (w) {
+  var playerStats = document.getElementById("playerStats").innerHTML;
+  playerStats = playerStats.replace("'","").replace("{","").replace("}", "").split(",");
+  statsOfPlayer = {};
+  for (var i = 0; i < playerStats.length; i++) {
+    var parts = playerStats[i].split(":")
+    statsOfPlayer[parts[0].trim().replace("'","").replace('"','').replace('"','')] = parts[1].trim().replace("'","");
+  }
   let count = 1;
   // game title
   const gametitle = "The Math Wizard";
@@ -348,9 +355,9 @@
       _x: x,
       _y: y,
       character: "@",
-      name: "you",
+      name: statsOfPlayer['username'].replace('"',''),
       // the player's stats
-      stats: { hp: 10, xp: 0, gold: 0 },
+      stats: { hp: 10, xp: Number(statsOfPlayer['xp']), gold: Number(statsOfPlayer['coins']) },
       // the ROT.js scheduler calls this method when it is time
       // for the player to act
       act: () => {
@@ -589,13 +596,12 @@
     const clicked = await setupButtons(answerValue);
     let fight = checkSolution(clicked, answerValue);
     if(fight) {
-      msg.push("You hit the monster");
+      msg.push(`${Game.player.name} hit the monster.`);
       hitter.stats.hp -= 1;
       sfx["hit"].play();
-      //Game.player.stats.xp += 1;
     } else {
       sfx["miss"].play();
-      msg.push("The monster hit you.");
+      msg.push(`The monster hit ${Game.player.name}.`);
       Game.player.stats.hp -= 1;
     }
     if(msg) {
@@ -727,6 +733,28 @@
   function setEndScreenValues(xp, gold) {
     $$(".xp-stat").forEach((el) => (el.textContent = Math.floor(xp)));
     $$(".gold-stat").forEach((el) => (el.textContent = gold));
+    statsOfPlayer["coins"] = gold;
+    statsOfPlayer["username"] = Game.player.name.trim().replace('"','');
+    statsOfPlayer["lesson_count"] = Number(statsOfPlayer["lesson_count"]);
+    if (xp > 150) {
+      statsOfPlayer["level"] = Number(statsOfPlayer["level"]) + 1;
+      xp -= 150;
+      statsOfPlayer["xp"] = xp;
+    } else {
+      statsOfPlayer["level"] = Number(statsOfPlayer["level"]);
+      statsOfPlayer["xp"] = xp;
+    }
+    var json = JSON.stringify(statsOfPlayer);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/updateData", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+    }
+    }
+    console.log(json);
+    xhr.send(json);
   }
 
   // updates the stats listed at the bottom of the screen

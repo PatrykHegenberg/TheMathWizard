@@ -29,4 +29,75 @@ class Database {
     public function get() {
         return $this->statement->fetchAll();
     }
+    
+    public function delete($params) {
+      $this->query("DELETE FROM user WHERE username = :user", ["user" => $params]);
+    }
+
+  public function update($params = []) {
+    dd($params);
+    $this->query("UPDATE user SET level= :level, xp= :xp, coins = :coins WHERE username = :user", [
+      "level" => $params[1], 
+      "xp" => $params[3], 
+      "coins" => $params[4],
+      "user" => $params[0],
+    ]);
+  }
+
+  public function getPlayerStats ($params) {
+    return $this->query(
+      "SELECT username, level, lesson_count, xp, coins FROM user WHERE username= :user", 
+      ["user" => $params])->get()[0];
+  }
+
+  public function login($params = []) {
+   $stmt = $this->query("SELECT * FROM user WHERE username = :user", ['user' => $params[0]])->get();
+  $count = sizeof($stmt);
+  if ($count == 1) {
+    $stmt = $stmt[0];;
+    
+    if (password_verify($params[1], $stmt["password"])) {
+      session_start();
+      $_SESSION["username"] = $stmt['username'];
+
+      header("Location: /profile");
+    } else {
+      echo "Anmeldung fehlgeschlagen!";
+    }
+  } else {
+    echo "Anmeldung fehlgeschlagen!";
+  } 
+  }
+
+  public function register($params = []) {
+     $stmt = $this->query("SELECT * FROM user WHERE username = :user", ['user' => $params['Username']])->get();
+  $count = sizeof($stmt);
+  if($count == 0 && Validator::string($params['Username'], 1, 255)){
+    $checkEmail = $this->query("SELECT * FROM user WHERE email = :email", ['email' => $params['Email-Adresse']])->find();
+    if(!$checkEmail && Validator::string($params['Email-Adresse'], 1, 255)) {
+      if($params["Passwort"] == $params["pw2"] && Validator::string($params['Passwort'], 8, 255)) {
+    //Username ist frei
+      //User anlegen
+        $hash = password_hash($params["Passwort"], PASSWORD_BCRYPT);
+        $this->query("INSERT INTO user (username, vorname, nachname, email, password, lesson_count, level, xp, coins) VALUES (
+          :username, :vorname, :nachname, :email, :password, :lesson_count, :level, :xp, :coins )", [
+            'username' => $params['Username'],
+            'vorname' => $params['Vorname'],
+            'nachname' => $params['Nachname'],
+            'email' => $params['Email-Adresse'],
+            'password' => $hash,
+            'lesson_count' => 0,
+            'level' => 1,
+            'xp' => 0,
+            'coins' => 0
+          ]);
+        header("Location: /login");
+      } else {
+        echo "Die Passwörter stimmen nicht überein";
+      }
+  } else {
+    echo "Der Username ist bereits vergeben";
+  }
+} 
+  }
 }

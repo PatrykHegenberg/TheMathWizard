@@ -14,7 +14,7 @@
 <link href="./../styles/game.css" rel="stylesheet" id="style">
   </head>
   <body>
-
+    <span class="metadata" id="playerStats" style="display:none"><?php echo json_encode($stats) ?></span>
     <!-- boilerplate splash -->
     <div class="screen" id="plate">
       <div>

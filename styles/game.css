@@ -262,7 +262,7 @@ a:hover {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
   transform: scale(8);
-  background-image: url("colored_tilemap_packed.png");
+  background-image: url("./../images/16x16DungeonTileset.png");
   margin: 80px auto;
 }
 
