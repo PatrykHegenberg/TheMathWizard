@@ -33,7 +33,7 @@
       "═": [352, 160], // room edge
       "║": [336, 176], // room edge
       "o": [40, 72], // room corner
-      "D": [16, 16], //Door to win
+      "D": [416, 176], //Door to win
       "s": [288, 112], //stairs to next Stage
     },
     width: 25,
@@ -539,18 +539,21 @@
     let random2 = eval(`${answerValue}${randomOperator} ${randomValue(1, 4)}`);
     if (random1 === random2){
       random2 += 1;
+      if (random2 === answerValue) {
+        random2 += 1;
+      }
     }
     else if (random1 < 1) {
-      random1 += 1;
+      random1 = 1;
     }
     else if (random2 < 1) {
-      random2 += 1;
+      random2 = 1;
     }
-    if (randomVar == 1) {
+    if (randomVar === 1) {
       document.getElementById("answer1").innerHTML = `${answerValue}`;
       document.getElementById("answer2").innerHTML = random1;
       document.getElementById("answer3").innerHTML = random2;
-    } else if (randomVar == 2) {
+    } else if (randomVar === 2) {
       document.getElementById("answer1").innerHTML = random1;
       document.getElementById("answer2").innerHTML = `${answerValue}`;
       document.getElementById("answer3").innerHTML = random2;

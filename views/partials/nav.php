@@ -12,7 +12,7 @@
   </div>
   <div class="px-6 pt-6 lg:px-8 mb-5">
     <div>
-      <nav class="flex h-9 items-center justify-between" aria-label="Global">
+      <nav  class="flex h-9 items-center justify-between" aria-label="Global">
         <div class="flex lg:min-w-0 lg:flex-1" aria-label="Global">
           <a href="/" class="<?= urlIs("/") ?> -m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
