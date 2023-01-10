@@ -249,14 +249,14 @@
       const key = takeFreeCell(freeCells);
       if (!i) {
         if(count < 5) {
-          game.stairs = key;
-          game.items[key] = "s";
+          game.stairs = freeCells[freeCells.length - 1];
+          game.items[freeCells[freeCells.length - 1]] = "s";
         } else {
-          game.door = key;
-          game.items[key] = "D";
+          game.door = freeCells[freeCells.length - 1];
+          game.items[freeCells[freeCells.length - 1]] = "D";
         }
       } else {
-        game.items[key] = ROT.RNG.getItem(["g"]);
+        game.items[key] = "g";
       }
     }
   }
@@ -343,10 +343,16 @@
 
   // both the player and monster initial position is set
   function createBeing(what, freeCells) {
+    if (what == makePlayer) {
+      const pos = posFromKey(freeCells[0]);
+      const being = what(pos[0], pos[1]);
+      return being; 
+    } else {
     const key = takeFreeCell(freeCells);
     const pos = posFromKey(key);
     const being = what(pos[0], pos[1]);
     return being;
+    }
   }
 
   /******************
@@ -534,7 +540,6 @@
    ******************************/
   // this is how the player fights a monster
   function checkSolution(solution, answer) {
-    console.log("Click: " + solution + " Antwort: " + answer);
     if (solution == answer) {
       return true;
     } else {
@@ -589,9 +594,6 @@
   }
 
   async function combat(hitter, receiver) {
-    console.log("hitter: " + hitter.name);
-    console.log("receiver: " + receiver.name);
-    console.log(hitter.stats.hp);
     let msg = [];
     const randomValue = (min, max) =>
       Math.floor(Math.random() * (max - min)) + min;
@@ -601,13 +603,11 @@
     const clicked = await setupButtons(answerValue);
     let fight = checkSolution(clicked, answerValue);
     if(fight) {
-      console.log(fight);
       msg.push("You hit the monster");
       hitter.stats.hp -= 1;
       sfx["hit"].play();
       //Game.player.stats.xp += 1;
     } else {
-      console.log(false);
       sfx["miss"].play();
       msg.push("The monster hit you.");
       Game.player.stats.hp -= 1;
@@ -838,7 +838,6 @@
     }
     if (code == 70 && ev.altKey && ev.ctrlKey && ev.shiftKey) {
       document.body.requestFullscreen();
-      console.log("Full screen pressed.");
       return;
     }
     if (code == 190) {

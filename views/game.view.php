@@ -51,7 +51,7 @@
                    class="nes-radio is-dark"
                    name="menu-items"
                    checked/>
-            <span>Instructions</span>
+            <span>Anleitung</span>
           </label>
 		  <br/>
           <label>
@@ -63,7 +63,7 @@
           </label>
         </div>
       </div>
-      <button id="play" class="nes-btn is-success action">Play</button>
+      <button id="play" class="nes-btn is-success action">Start</button>
     </div>
 
     <!-- credits screen -->
@@ -93,10 +93,10 @@
 
     <!-- instructions screen -->
     <div id="instructions" class="screen modal">
-      <p>Instructions</p>
+      <p>Anleitung</p>
       <div class="nes-container is-rounded is-dark">
-        <p>Du musst dich durch denn Dungeon kämpfen und denn Weg in den höchsten Raum finden. du kämpfst durch das Lösen von Matheaufgaben.
-        Solltest du eine falsche Antwort geben erleidest du Schaden, ansonsten fügst du deinem Gegner Schaden zu.</p>
+        <p>Kämpfe dich durch denn Dungeon und finde den Weg in den untersten Raum. Durch das Lösen der Matheaufgaben fügst deinen Gegnern Schaden zu.
+        Bei einer falschen Antwort erleidest du Schaden.</p>
         <p>Benutze die Pfeiltasten um dich zu bewegen.</p>
       </div>
       <button class="nes-btn is-success action">Ok</button>
