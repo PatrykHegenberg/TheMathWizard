@@ -48,10 +48,9 @@
     height: 40,
   };
 
-  const usePointer = true;
-  const useArrows = true;
+  //const usePointer = true;
+  //const useArrows = true;
   const touchOffsetY = -20; // move the center by this much
-  const scaleMobile = 4; // scale mobile screens by this much
   const scaleMonitor = 6; // scale computer screens by this much
   const turnLengthMS = 200; // shortest time between turns
 
@@ -515,6 +514,7 @@
       } else {
         const key = m._x + "," + m._y;
         removeMonster(m);
+        Game.player.stats.xp += 1;
         sfx["kill"].play();
         return true;
       }
@@ -605,7 +605,7 @@
       msg.push("You hit the monster");
       hitter.stats.hp -= 1;
       sfx["hit"].play();
-      Game.player.stats.xp += 1;
+      //Game.player.stats.xp += 1;
     } else {
       console.log(false);
       sfx["miss"].play();
@@ -616,6 +616,7 @@
       toast(battleMessage(msg));
     }
     checkDeath(hitter);
+    checkDeath(receiver);
     showScreen("game");
     renderStats(Game.player.stats);
     Game.playerAllowedToMove = true;
@@ -644,7 +645,6 @@
     const p = Game.player;
     p.character = "T";
     drawTile(Game, p._x + "," + p._y);
-    const ghost = createGhost([p._x, p._y]);
     removeListeners(Game);
     sfx["lose"].play();
     setTimeout(function () {
@@ -659,7 +659,7 @@
    *** graphics, UI & browser utils ***
    ************************************/
 
-  const clickevt = !!("ontouchstart" in window) ? "touchstart" : "click";
+  const clickevt = "click";
 
   const $ = document.querySelector.bind(document);
   const $$ = document.querySelectorAll.bind(document);
@@ -671,9 +671,6 @@
     $("#canvas").appendChild(el);
     window.onkeydown = keyHandler;
     window.onkeyup = arrowStop;
-    if (useArrows) {
-      document.ontouchend = arrowStop;
-    }
     showScreen("game");
   }
 
@@ -753,22 +750,6 @@
     for (let s in stats) {
       attach(st, el("span", {}, [s.toUpperCase() + ": " + stats[s]]));
     }
-  }
-
-  // creates the ghost sprite when the player dies
-  function createGhost(pos) {
-    const tw = tileOptions.tileWidth;
-    const th = tileOptions.tileHeight;
-    const left = "left:" + pos[0] * tw + "px;";
-    const top = "top:" + pos[1] * th + "px;";
-    const ghost = el("div", {
-      className: "sprite ghost free float-up",
-      style: left + top,
-    });
-    ghost.onanimationend = function () {
-      rmel(ghost);
-    };
-    return attach($("#canvas"), ghost);
   }
 
   function battleMessage(messages) {
@@ -858,10 +839,6 @@
     if (code == 70 && ev.altKey && ev.ctrlKey && ev.shiftKey) {
       document.body.requestFullscreen();
       console.log("Full screen pressed.");
-      return;
-    }
-    if (code == 73) {
-      toggleInventory(ev, true);
       return;
     }
     if (code == 190) {

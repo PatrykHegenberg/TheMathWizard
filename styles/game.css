@@ -271,34 +271,14 @@ a:hover {
   transform: none;
 }
 
-
 .tomb {
   background-position: -72px -56px;
-}
-
-.ghost {
-  background-position: -72px -8px;
-  margin: 0px;
 }
 
 .empty {
   background-position: -8px -48px;
 }
 
-.float-up {
-  animation: float-up 2s linear forwards;
-}
-
-@keyframes float-up {
-  from {
-    transform: scale(1) translate(0px, 0px);
-    opacity: 1;
-  }
-  to {
-    transform: scale(3) translate(0px, -20px);
-    opacity: 0;
-  }
-}
 
 .grow-fade {
   animation: grow-fade 2s linear;
@@ -351,33 +331,6 @@ a:hover {
   color: #FFB570;
 }
 
-#inventory {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-}
-
-#inventory .sprite {
-  transform: scale(3);
-  display: inline-block;
-  margin: 1em 2em 1em 1em;
-  vertical-align: middle;
-}
-
-#inventory li {
-  margin: 1em 0px;
-}
-
-#inventory ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-#inventory > div {
-  display: none;
-}
-
 @media (max-width: 750px) {
   #inventory {
     bottom: 72px;
@@ -386,58 +339,6 @@ a:hover {
   #hud {
     width: 100%;
   }
-}
-
-#arrows {
-  display: none;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-}
-
-#arrows > * {
-  float: left;
-  font-size: 16px;
-  bottom: 0px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#arrows > * > span {
-  pointer-events: none;
-}
-
-#btn-left {
-  position: absolute;
-  right: 7em;
-}
-
-#btn-right {
-  position: absolute;
-  right: 0em;
-}
-
-#btn-up {
-  transform: rotate(90deg);
-  position: absolute;
-  right: 3.5em;
-  margin-bottom: 3.75em;
-}
-
-#btn-down {
-  transform: rotate(90deg);
-  position: absolute;
-  right: 3.5em;
-}
-
-#btn-skip {
-  position: absolute;
-  right: 0em;
-  margin-bottom: 3.75em;
-  padding: 0px;
 }
 
 @media (max-width: 1024px) {

@@ -142,13 +142,6 @@
       <div id="canvas"></div>
       <div id="message" class="nes-container is-rounded is-dark hide"></div>
       <div id="hud" class="nes-container is-rounded is-dark"></div>
-      <div id="arrows">
-        <div id="btn-left" class="nes-container is-rounded is-dark"><span>&lt;</span></div>
-        <div id="btn-up" class="nes-container is-rounded is-dark"><span>&lt;</span></div>
-        <div id="btn-down" class="nes-container is-rounded is-dark"><span>&gt;</span></div>
-        <div id="btn-right" class="nes-container is-rounded is-dark"><span>&gt;</span></div>
-        <div id="btn-skip" class="nes-container is-rounded is-dark"><span>.</span></div>
-      </div>
     </div>
 
   </body>
