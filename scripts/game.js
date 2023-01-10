@@ -11,37 +11,30 @@
   // It's the "microrogue" tileset
 
   const tileSet = document.createElement("img");
-  tileSet.src = "./../images/colored_tilemap_packed.png";
+  tileSet.src = "./../images/16x16DungeonTileset.png";
 
   const tileOptions = {
     layout: "tile",
     bg: "transparent",
-    tileWidth: 8,
-    tileHeight: 8,
+    tileWidth: 16,
+    tileHeight: 16,
     tileSet: tileSet,
     tileMap: {
-      "@": [40, 0], // player
-      ".": [32, 32], // floor
-      "M": [88, 0], // monster
-      "*": [72, 24], // treasure chest
-      "g": [64, 40], // gold
-      "x": [56, 32], // axe
-      "p": [56, 64], // potion
-      "a": [40, 32], // tree 1
-      "b": [32, 40], // tree 2
-      "c": [40, 40], // tree 3
-      "d": [48, 40], // tree 4
-      "e": [56, 40], // tree 5
-      "T": [72, 56], // tombstone
-      "╔": [0, 72], // room corner
-      "╗": [24, 72], // room corner
-      "╝": [72, 72], // room corner
-      "╚": [48, 72], // room corner
-      "═": [8, 72], // room edge
-      "║": [32, 72], // room edge
+      "@": [144, 224], // player
+      ".": [32, 48], // floor
+      "M": [32, 160], // monster
+      "g": [272, 144], // gold
+      "p": [192, 176], // potion
+      "T": [112, 160], // tombstone
+      "╔": [336, 160], // room corner
+      "╗": [368, 160], // room corner
+      "╝": [368, 192], // room corner
+      "╚": [336, 192], // room corner
+      "═": [352, 160], // room edge
+      "║": [336, 176], // room edge
       "o": [40, 72], // room corner
       "D": [16, 16], //Door to win
-      "s": [32, 24], //stairs to next Stage
+      "s": [288, 112], //stairs to next Stage
     },
     width: 25,
     height: 40,
@@ -50,11 +43,11 @@
   //const usePointer = true;
   //const useArrows = true;
   const touchOffsetY = -20; // move the center by this much
-  const scaleMonitor = 6; // scale computer screens by this much
+  const scaleMonitor = 3; // scale computer screens by this much
   const turnLengthMS = 200; // shortest time between turns
 
   // these map tiles are walkable
-  const walkable = [".", "*", "g", "D", "s"];
+  const walkable = [".", "g", "D", "s"];
 
   // these map tiles should not be replaced by room edges
   const noreplace = walkable.concat(["M", "╔", "╗", "╚", "╝", "═", "║"]);
@@ -226,7 +219,6 @@
     digger.create(digCallback.bind(game));
 
     generateItems(game, freeCells);
-    generateScenery(game.map, zeroCells);
     generateRooms(game.map, digger);
 
     game.player = createBeing(makePlayer, freeCells);
@@ -271,15 +263,6 @@
     const x = parseInt(parts[0]);
     const y = parseInt(parts[1]);
     return [x, y];
-  }
-
-  function generateScenery(map, freeCells) {
-    for (let i = 0; i < 100; i++) {
-      if (freeCells.length) {
-        const key = takeFreeCell(freeCells);
-        map[key] = ROT.RNG.getItem("abcde");
-      }
-    }
   }
 
   function generateRooms(map, mapgen) {
