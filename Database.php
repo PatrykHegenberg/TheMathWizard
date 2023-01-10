@@ -37,10 +37,10 @@ class Database {
   public function update($params = []) {
     dd($params);
     $this->query("UPDATE user SET level= :level, xp= :xp, coins = :coins WHERE username = :user", [
-      "level" => $params[1], 
-      "xp" => $params[3], 
-      "coins" => $params[4],
-      "user" => $params[0],
+      "level" => $params["level"], 
+      "xp" => $params["xp"], 
+      "coins" => $params["coins"],
+      "user" => $params["username"],
     ]);
   }
 
