@@ -1,6 +1,5 @@
 (function (w) {
   let count = 1;
-  let clickCount = 0;
   // game title
   const gametitle = "The Math Wizard";
 
@@ -548,32 +547,33 @@
   }
 
    async function setupButtons(answerValue) {
+    let operators = ["+", "-"];
+    let randomOperator = operators[Math.floor(Math.random() * operators.length)];
     const randomValue = (min, max) =>
       Math.floor(Math.random() * (max - min)) + min;
     let randomVar = randomValue(1, 4);
+    let random1 = eval(`${answerValue}${randomOperator} ${randomValue(1, 4)}`);
+    let random2 = eval(`${answerValue}${randomOperator} ${randomValue(1, 4)}`);
+    if (random1 === random2){
+      random2 += 1;
+    }
+    else if (random1 < 1) {
+      random1 += 1;
+    }
+    else if (random2 < 1) {
+      random2 += 1;
+    }
     if (randomVar == 1) {
       document.getElementById("answer1").innerHTML = `${answerValue}`;
-      document.getElementById("answer2").innerHTML = `${
-        answerValue + randomValue(1, 4)
-      }`;
-      document.getElementById("answer3").innerHTML = `${
-        answerValue - randomValue(1, 4)
-      }`;
+      document.getElementById("answer2").innerHTML = random1;
+      document.getElementById("answer3").innerHTML = random2;
     } else if (randomVar == 2) {
-      document.getElementById("answer1").innerHTML = `${
-        answerValue + randomValue(1, 4)
-      }`;
+      document.getElementById("answer1").innerHTML = random1;
       document.getElementById("answer2").innerHTML = `${answerValue}`;
-      document.getElementById("answer3").innerHTML = `${
-        answerValue - randomValue(1, 4)
-      }`;
+      document.getElementById("answer3").innerHTML = random2;
     } else {
-      document.getElementById("answer1").innerHTML = `${
-        answerValue - randomValue(1, 4)
-      }`;
-      document.getElementById("answer2").innerHTML = `${
-        answerValue + randomValue(1, 4)
-      }`;
+      document.getElementById("answer1").innerHTML = random1;
+      document.getElementById("answer2").innerHTML = random2;
       document.getElementById("answer3").innerHTML = `${answerValue}`;
     }
     showScreen("combat");
