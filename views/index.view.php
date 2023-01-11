@@ -2,7 +2,7 @@
 <?php require ('partials/nav.php') ?>
 <div class="isolate bg-white my-10">
     <main style="background-color: #3f3035;">
-    <div class="relative px-6 lg:px-8 min-h-screen" style="background-image: url(../images/HeroBanner.png); background-repeat: no-repeat; background-position: center;">
+    <div class="relative px-6 lg:px-8 min-h-500" style="background-image: url(../images/HeroBanner.png); background-repeat: no-repeat; background-position: center;">
       <div class="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
         <div>
           <div class="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -33,10 +33,10 @@
         </div>
       </div>
 </div>
-<div class="h-48" style="background-color: #3f3035;">
+<div class="h-24" style="background-color: #3f3035;">
   
 </div>
-<div class="bg-white py-24 sm:py-32 lg:py-40">
+<div class="py-24 sm:py-32 lg:py-40" style="background-color: #3f3035;">
   <div class="nes-container with-title mx-auto max-w-7xl px-6 lg:px-8 bg-gray-50">
     <p class="title">Features</p>
     <div class="sm:text-center">

@@ -1,11 +1,22 @@
 (function (w) {
   var playerStats = document.getElementById("playerStats").innerHTML;
-  playerStats = playerStats.replace("'","").replace("{","").replace("}", "").split(",");
-  statsOfPlayer = {};
-  for (var i = 0; i < playerStats.length; i++) {
-    var parts = playerStats[i].split(":")
-    statsOfPlayer[parts[0].trim().replace("'","").replace('"','').replace('"','')] = parts[1].trim().replace("'","");
+
+  function convertData(stats) {
+    var player = {};
+    stats = stats.replace("'", "").replace("{","").replace("}","");
+    stats = stats.split(",");
+    for (let i = 0; i < stats.length; i++) {
+      var parts = stats[i].split(":");
+      if (isNaN(Number(parts[1].replace("'","").replace('"','').replace('"','')))) {
+      player[parts[0].replace("'","").replace('"','').replace('"','')] = parts[1].replace("'","").replace('"','').replace('"','');
+      } else {
+        player[parts[0].replace("'","").replace('"','').replace('"','')] = Number(parts[1].replace("'","").replace('"','').replace('"',''));
+      }
+    }
+    return player;
   }
+
+  var statsOfPlayer = convertData(playerStats);
   let count = 1;
   // game title
   const gametitle = "The Math Wizard";

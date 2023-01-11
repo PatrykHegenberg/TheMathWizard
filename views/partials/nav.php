@@ -19,7 +19,7 @@
             <a href="/logout" class="<?= urlIs("/logout") ?> nes-btn text-sm">Abmelden</a>
           <?php else : ?>
             <a href="/login" class="<?= urlIs('/login') ?> nes-btn text-sm">Anmelden</a>
-            <a href="/register" class="<?= urlIs('/register') ?> nes-btn text-sm">Registrieren</a>
+           <!-- <a href="/register" class="<?= urlIs('/register') ?> nes-btn text-sm">Registrieren</a>-->
           <?php endif; ?>
         </div>
       </nav>
