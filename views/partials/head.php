@@ -11,5 +11,4 @@
  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P');
 </style>
 </head>
-<body class="h-full">
-<div class="min-h-full">
+

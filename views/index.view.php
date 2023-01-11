@@ -1,16 +1,16 @@
 <?php require ('partials/head.php') ?>
 <?php require ('partials/nav.php') ?>
 <div class="isolate bg-white my-10">
-    <main>
-    <div class="relative px-6 lg:px-8 min-h-screen">
+    <main style="background-color: #3f3035;">
+    <div class="relative px-6 lg:px-8 min-h-screen" style="background-image: url(../images/HeroBanner.png); background-repeat: no-repeat; background-position: center;">
       <div class="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
         <div>
           <div class="hidden sm:mb-8 sm:flex sm:justify-center">
             
           </div>
           <div>
-            <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Automatisiere spielerisch das 1x1</h1>
-            <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Zeige was du kannst und kämpfe dich durch denn Dungeon.</p>
+            <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl" style="color: #e6e6e7;">Automatisiere spielerisch das 1x1</h1>
+            <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center" style="color: whitesmoke;">Zeige was du kannst und kämpfe dich durch denn Dungeon.</p>
             <div class="mt-8 flex gap-x-4 sm:justify-center">
               <a href="/login" class="<?= urlIs("/login") ?> nes-btn is-primary">
                 Los geht's
@@ -33,7 +33,7 @@
         </div>
       </div>
 </div>
-<div class="bg-indigo-500 h-48">
+<div class="h-48" style="background-color: #3f3035;">
   
 </div>
 <div class="bg-white py-24 sm:py-32 lg:py-40">
@@ -101,7 +101,7 @@
     </div>
   </div>
 </div>
-<div class="bg-indigo-500 h-48">
+<div class="h-48" style="background-color: #3f3035;">
 </div>
 <div class="bg-gray-50">
   <div class="mx-auto max-w-7xl py-12 px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">

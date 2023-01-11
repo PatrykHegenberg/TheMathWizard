@@ -1,6 +1,5 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
-<?php require('partials/banner.php') ?>
 <main>
   <div class="flex flex-col mx-auto text-center max-w-7xl py-6 sm:px-6 lg:px-8 container">
     <div class="flex justify-center">
