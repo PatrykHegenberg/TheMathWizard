@@ -590,11 +590,11 @@
         random2 += 1;
       }
     }
-    else if (random1 < 1) {
-      random1 = 1;
+    if (random1 < 1) {
+      random1 = 1 + randomValue(0,2);
     }
-    else if (random2 < 1) {
-      random2 = 1;
+    if (random2 < 1) {
+      random2 = 1 + randomValue(0, 2);
     }
     if (randomVar === 1) {
       document.getElementById("answer1").innerHTML = `${answerValue}`;
@@ -642,12 +642,12 @@
     const clicked = await setupButtons(answerValue);
     let fight = checkSolution(clicked, answerValue);
     if(fight) {
-      msg.push(`${Game.player.name} hit the monster.`);
+      msg.push(`${Game.player.name} haut ${hitter.name}.`);
       hitter.stats.hp -= 1;
       sfx["hit"].play();
     } else {
       sfx["miss"].play();
-      msg.push(`The monster hit ${Game.player.name}.`);
+      msg.push(`${hitter.name} haut ${Game.player.name}.`);
       Game.player.stats.hp -= 1;
     }
     if(msg) {
@@ -817,7 +817,7 @@
       return msgs
         .concat(
           m.split(" ").map(function (p) {
-            const match = p.match(/hit|miss/);
+            const match = p.match(/haut|miss/);
             return el("span", { className: match ? match[0] : "" }, [p, " "]);
           })
         )
