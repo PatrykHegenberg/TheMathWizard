@@ -1,7 +1,7 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
-<div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="w-full max-w-md space-y-8 nes-container">
+<div class="container register">
+  <div class="nes-container">
 <form action="/register" method="POST">
 
   <div class="nes-field">

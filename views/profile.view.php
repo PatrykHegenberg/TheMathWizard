@@ -1,28 +1,28 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
 
-<div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="flex-col">
-    <div class="w-1000 space-y-8 nes-container">
-      <section class="message-list flex-auto">
-        <section class="message -left flex space-x-10">
-          <i class="nes-bcrikko mr-10"></i>
-          <div class="nes-balloon from-left mx-10">
+<div class="container profile">
+  <div>
+    <div class="nes-container">
+      <section class="message-list">
+        <section class="message -left">
+          <i class="nes-bcrikko"></i>
+          <div class="nes-balloon from-left">
             <p>Hallo <?= $stats['username'] ?> schön das du da bist.</p>
           </div>
         </section>
       </section>
-      <div class="nes-container flex-col justife-center items-center space-y-4">
+      <div class="nes-container">
         <div class="text-center">
-          <h1>Was möchtest du tun?</h1>
+          <h3>Was möchtest du tun?</h3>
         </div>
-        <div class="flex justify-evenly items-center">
-          <a href="/learn" class="<?= urlIs("/learn") ?> nes-btn">Lernen</a>
+        <div>
+          <!--<a href="/learn" class="<?= urlIs("/learn") ?> nes-btn">Lernen</a>-->
           <a href="/game" class="<?= urlIs("/game") ?> nes-btn">Üben</a>
         </div>
       </div>
     </div>
-    <div class="nes-container with-title mt-10 space-y-4">
+    <div class="nes-container with-title">
       <span class="title">Dein Fortschritt</span>
       <span>Du bist aktuell Level: <?php echo $stats['level'] ?> </span>
       <br>
@@ -39,9 +39,9 @@
         </div>
       </div>
     </div>
-    <div class="nes-container mt-10">
+    <div class="nes-container">
       <div>
-      <a href="/delete" class="nes-btn is-error">Account löschen</a> 
+        <a href="/delete" class="nes-btn is-error">Account löschen</a>
       </div>
     </div>
   </div>
