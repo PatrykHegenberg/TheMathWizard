@@ -368,7 +368,7 @@
       character: "@",
       name: statsOfPlayer['username'].replace('"',''),
       // the player's stats
-      stats: { hp: 10, xp: Number(statsOfPlayer['xp']), gold: Number(statsOfPlayer['coins']) },
+      stats: { hp: 10, xp: 0, gold: 0 },
       // the ROT.js scheduler calls this method when it is time
       // for the player to act
       act: () => {
@@ -418,7 +418,6 @@
     // check if we've hit the monster
     const hitMonster = monsterAt(x, y);
     if (hitMonster) {
-      //combat(p, hitMonster);
       setTimeout(function () {
         Game.engine.unlock();
       }, 250);
@@ -601,7 +600,13 @@
     let msg = [];
     const randomValue = (min, max) =>
       Math.floor(Math.random() * (max - min)) + min;
-    let [num1, num2] = [randomValue(1, 10), randomValue(1, 10)];
+    let num1, num2;
+    if (statsOfPlayer['level'] > 10) {
+      [num1, num2] = [randomValue(1, 10), randomValue(1, 10)];
+    } else {
+      num1 = statsOfPlayer['level'];
+      num2 = randomValue(1, 10);
+    }
     const answerValue = eval(`${num1} * ${num2}`);
     document.getElementById("question").innerHTML = `${num1} * ${num2} = ? `;
     const clicked = await setupButtons(answerValue);
@@ -744,16 +749,15 @@
   function setEndScreenValues(xp, gold) {
     $$(".xp-stat").forEach((el) => (el.textContent = Math.floor(xp)));
     $$(".gold-stat").forEach((el) => (el.textContent = gold));
-    statsOfPlayer["coins"] = gold;
+    statsOfPlayer["coins"] += gold;
     statsOfPlayer["username"] = Game.player.name.trim().replace('"','');
-    statsOfPlayer["lesson_count"] = Number(statsOfPlayer["lesson_count"]);
     if (xp > 150) {
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]) + 1;
       xp -= 150;
-      statsOfPlayer["xp"] = xp;
+      statsOfPlayer["xp"] += xp;
     } else {
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]);
-      statsOfPlayer["xp"] = xp;
+      statsOfPlayer["xp"] += xp;
     }
     var json = JSON.stringify(statsOfPlayer);
     var xhr = new XMLHttpRequest();

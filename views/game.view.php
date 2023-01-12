@@ -110,7 +110,7 @@
         <p>Du hast das Spiel gewonnen.</p>
         <p>Du hast <span class="gold-stat"></span> Gold und <span class="xp-stat"></span> XP erhalten.</p>
       </div>
-      <button class="nes-btn is-success action">Ok</button>
+        <button onclick="javascript:window.location.href='/profile'" class="nes-btn is-success action">Ok</button>
     </div>
 
     <!-- lose screen -->
@@ -122,7 +122,7 @@
         <p>Du bist tot.</p>
         <p>Du hast <span class="gold-stat"></span> Gold und <span class="xp-stat"></span> XP erhalten.</p>
       </div>
-      <button class="nes-btn is-success action">Ok</button>
+      <button onclick="javascript:window.location.href='/profile'" class="nes-btn is-success action">Ok</button>
     </div>
     
     <!--Combat screen-->
