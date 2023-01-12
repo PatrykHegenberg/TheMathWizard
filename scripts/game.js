@@ -40,7 +40,9 @@
     tileMap: {
       "@": [144, 224], // player
       ".": [32, 48], // floor
-      "M": [32, 160], // monster
+      "M": [32, 160], // normal orc
+      "a": [0, 160], // small orc
+      "b": [80, 176], // Boss
       "g": [272, 144], // gold
       "p": [192, 176], // potion
       "T": [112, 160], // tombstone
@@ -241,7 +243,11 @@
 
     game.player = createBeing(makePlayer, freeCells);
     game.monsters = []
-    for ( var i= 0; i<= stage; i++) {
+    if (stage <= 4) {
+      for ( var i= 0; i<= stage; i++) {
+        game.monsters.push(createBeing(makeMonster, freeCells));
+      }
+    } else {
       game.monsters.push(createBeing(makeMonster, freeCells));
     }
 
@@ -450,16 +456,40 @@
 
   // basic ROT.js entity with position and stats
   function makeMonster(x, y) {
-    return {
-      // monster position
-      _x: x,
-      _y: y,
-      character: "M",
-      name: "Orc",
-      stats: { hp: 3 },
-      // called by the ROT.js scheduler
-      act: monsterAct,
-    };
+    if (count === 5) {
+      return {
+        _x: x,
+        _y: y,
+        character: "b",
+        name: "Necromancer",
+        stats: {hp: 10},
+        act: monsterAct,
+      }
+    } else {
+      let randomMonster = Math.floor(Math.random() * 2);
+      if (randomMonster === 1) {
+        return {
+          _x: x,
+          _y: y,
+          character: "M",
+          name: "Orc",
+          stats: { hp: 4 },
+          act: monsterAct,
+        };
+      } else {
+        return {
+        // monster position
+          _x: x,
+          _y: y,
+          character: "a",
+          name: "Kleiner Orc",
+          stats: { hp: 3 },
+          // called by the ROT.js scheduler
+          act: monsterAct,
+        };
+      }
+    }
+    
   }
 
   function monsterAct() {
@@ -634,6 +664,7 @@
   // this gets called when the player wins the game
   function win() {
     Game.engine.lock();
+    Game.player.stats.xp += 10;
     for (let i = 0; i < 5; i++) {
       setTimeout(function () {
         sfx["win"].play();
@@ -684,7 +715,7 @@
 
   function rescale(x, y, game) {
     const c = $("canvas");
-    const scale = window.innerWidth < 600 ? scaleMobile : scaleMonitor;
+    const scale = scaleMonitor;
     const offset = game.touchScreen ? touchOffsetY : 0;
     const tw =
       x * -tileOptions.tileWidth +
@@ -751,10 +782,10 @@
     $$(".gold-stat").forEach((el) => (el.textContent = gold));
     statsOfPlayer["coins"] += gold;
     statsOfPlayer["username"] = Game.player.name.trim().replace('"','');
-    if (xp > 150) {
+    if ((statsOfPlayer['xp'] + xp) > 150) {
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]) + 1;
-      xp -= 150;
       statsOfPlayer["xp"] += xp;
+      statsOfPlayer["xp"] -= 150;
     } else {
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]);
       statsOfPlayer["xp"] += xp;
