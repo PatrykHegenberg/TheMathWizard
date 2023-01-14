@@ -64,6 +64,10 @@ html {
   line-height: 30px;
 }
 
+.container .nes-container {
+  margin-bottom: 10px;
+}
+
 h1,
 h2,
 h3,
@@ -436,6 +440,7 @@ main {
 .container .login {
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .asset-dark {
   visibility: hidden;
@@ -447,9 +452,6 @@ main {
 }
 .asset-dark {
   display: none;
-}
- {
-  
 }
 
  .asset-dark {

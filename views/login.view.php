@@ -3,7 +3,7 @@
 
 <div class="container login">
   <div class="nes-container">
-    <form action="/login" method="POST">
+    <form action="/login" method="POST" class="container">
       <div>
         <h2>Melde dich mit deinem Konto an.</h2>
         <p>
