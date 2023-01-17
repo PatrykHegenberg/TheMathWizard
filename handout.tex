@@ -1,3 +1,4 @@
+
 %!TeX encoding=utf8
 \documentclass[fontsize:11pt]{article}
 \usepackage{graphicx}
@@ -24,7 +25,7 @@
 
 
 % Literaturverzeichnis	
-\usepackage[style=alphabetic,sorting=ynt,backend=biber]{biblatex}
+\usepackage[style=apa,sorting=ynt,backend=biber]{biblatex}
 
 % Zeilenabstand
 \usepackage[onehalfspacing]{setspace}
@@ -34,9 +35,9 @@
 \clearpairofpagestyles
 \setlength{\headheight}{2.5\baselineskip}
 \setlength{\footheight}{1\baselineskip}
-\ihead[]{}
-\chead[]{\author}
-\ohead[]{Datum: \today}
+\ihead[Patryk Hegenberg]{\author}
+\chead[Entwicklung einer Lernplattform für Grundschüler]{}
+\ohead[102209025]{Datum: \today}
 \cfoot[]{\pagemark}
 
 \usepackage{titlesec}
@@ -44,30 +45,90 @@
 
 %titlepage information
 \title{Entwicklung einer Lernplattform für Grundschüler}
-\author{Patryk Hegenberg}
+\author{Eingereicht von: Patryk Hegenberg, 102209025, Hannover\\ Für das Modul: DSGWP042201 \\ Datum des Referats: 27.01.2023}
 \date{\today}
 \addbibresource{Literatur.bib}
 
-
 \begin{document}
+
 \maketitle
-Eingereciht von: 
-\thispagestyle{empty}
   
 \section{Einleitung}
-
+    ''The Math Wizard'' ist eine innovative Lernplattform, die es Kindern ermöglicht, das Einmaleins durch ein interaktives und unterhaltsames Roguelike-Spiel zu automatisieren (\cite{deterding} S.10). Dabei werden Zufalls-generierte Level verwendet, in denen die Kinder durch das Lösen von Multiplikationsaufgaben ihre Gegner besiegen. Besonders hervorzuheben ist, dass die Plattform individuell auf den Lernfortschritt des Schülers angepasst wird und somit für jeden Schüler eine Herausforderung darstellt (\cite{sailer} S.9 zitiert von \cite{hattie} S.81-112). Die Plattform bietet zudem eine motivierende und unterstützende Umgebung, die Schüler ermutigt, weiterzumachen und ihre Fähigkeiten im Einmaleins zu verbessern.
         
 \section{Anforderung}
-
+    Die Lernplattform ''The Math Wizard'' erfordert die Erstellung einer Web-Anwendung auf Basis von PHP, die ein ansprechendes Design mit CSS, eine funktionierende Geschäftslogik und eine Anbindung an eine Datenbank beinhaltet. Die Datenbank muss in der Lage sein, Nutzerinformationen und Lernfortschritte zu speichern, zu aktualisieren und zu löschen. Zudem sollte die Anwendung eine intuitive und benutzerfreundliche Oberfläche bieten, um den Schülern den Zugang und die Interaktion mit der Plattform zu erleichtern.
         
 \section{Aufbau der Lösung}
-
+    Um ein tieferes Verständnis für die Funktionsweise und die Implementierung von ''The Math Wizard'' zu erlangen, werden wir im nachfolgenden Abschnitt die verschiedenen Komponenten und Technologien, die in der Entwicklung der Web-Anwendung verwendet wurden, genauer untersuchen.
+    \subsection{Backend}
+        Die Umsetzung des Backends erfolgt durch den Einsatz der Programmiersprache PHP. PHP ist eine serverseitige Programmiersprache, die häufig für die Entwicklung von Web-Anwendungen verwendet wird (\cite{steve_prettyman_learn_2020} S.1). Hierbei kam die MVC-Architektur zum Einsatz (Model-View-Controller), bei welcher die Komponenten Steuerung, Datenverwaltung- und Manipulation, sowie Darstellung von einander getrennt werden und vom Controller gesteuert werden (\cite{steve_prettyman_learn_2020} S.80-81). Diese Architektur ermöglicht eine saubere Trennung von Anzeige- und Geschäftslogik und unterstützt die Wartbarkeit und Erweiterbarkeit des Codes.
+        Auch die Geschäftslogik zur Verwaltung und Anlegung von Nutzern wurde im Backend mittels PHP realisiert. Ein weiterer Bestandteil des Backends ist die zum Einsatz kommende MariaDB. MariaDB ist eine Open-Source-Datenbank, die auf MySQL aufbaut und von der Community entwickelt wird, sie ist also eine Alternative zu MySQL (\cite{noauthor_mariadb_nodate}).
+    \subsection{Frontend der Webseite}
+        Für das Frontend der Webseite wurde HTML, CSS und Javascript verwendet. HTML (Hypertext Markup Language) ist die Grundlage für das Layout und die Struktur einer Webseite (\cite{noauthor_html_nodate}). CSS (Cascading Style Sheets) ermöglicht das Styling und die Gestaltung der Webseite (\cite{noauthor_cascading_nodate}). Javascript ist eine Programmiersprache, die auf dem Client ausgeführt wird und es ermöglicht Interaktivität und Dynamik auf einer Webseite zu erzeugen (\cite{haverbeke} S. 17).
+    \subsection{Umsetzung des Spiels}
+        Das Spiel selbst wurde mit JavaScript und der Bibliothek rot.js entwickelt. rot.js ist eine Bibliothek, die speziell für die Erstellung von ASCII-basierten Rollenspielen entwickelt wurde und es ermöglicht, Spiele mit einfachen Grafiken und Texten zu erstellen (\cite{rotjs_2012}). Diese Bibliothek enthält Funktionen für die Erstellung von Levels, Gegnern, Kämpfen und anderen Aspekten, die für ein Roguelike-Spiel erforderlich sind.
+        Durch die Verwendung von JavaScript und rot.js konnte ich ein Spiel mit zufällig generierten Levels und einem Kampfsystem erstellen, das auf dem Lösen von Multiplikationsaufgaben basiert. Das Spiel wird mithilfe von HTML Canvas dargestellt, eine Technologie, die es ermöglicht dynamisch 2D-Grafiken auf Websites darzustellen (\cite{javascriptGameDev} S.5). Zur schnelleren Umsetzung wurden dabei Teile des Designs und des Quelltexts von ''Roguelike Browser Boilerplate''\footnote{http://roguebasin.com/index.php/Roguelike\_Browser\_Boilerplate}(RBB) verwendet. Das Design wurde mit NES CSS\footnote{https://nostalgic-css.github.io/NES.css/} gestaltet, welches ein CSS Framework ist, das es ermöglicht, eine authentische Retro Optik zu erreichen, die an die 8-Bit-Grafik von NES\footnote{Nintendo Entertainment System}-Videospielen erinnert (\cite{bcrikko_nescss_nodate}). Durch die Verwendung dieser Technologien und Quelltext-Bausteinen konnte ich ein ansprechendes und unterhaltsames Spiel erstellen, das den Schülern dabei helfen soll, das Einmaleins zu automatisieren.
 \section{Aufbau der Datenbank}
- 
-\section{Technische Lösung}
+In der MariaDB wurde eine Tabelle erstellt, um die Nutzerdaten zu speichern. Diese Tabelle enthält die folgenden Felder:
+\begin{itemize}
+\item 'id': ein automatisch hochgezähltes Feld, das als Primärschlüssel für jeden Nutzer verwendet wird.
+\item 'username': ein eindeutiger Benutzername für jeden Nutzer.
+\item 'vorname': der Vorname des Nutzers.
+\item 'nachname': der Nachname des Nutzers.
+\item 'email': die E-Mail-Adresse des Nutzers.
+\item 'password': das verschlüsselte Passwort des Nutzers.
+\item 'lesson\_count': die Anzahl der absolvierten Lektionen des Nutzers.
+\item 'level': der aktuelle Level des Nutzers.
+\item 'xp': die Erfahrungspunkte des Nutzers.
+\item 'coins': die Anzahl der Münzen des Nutzers.
+\end{itemize}
+Die Tabelle hat auch einen unique key 'reference\_unique' (username, email) um sicherzustellen, dass jeder Nutzer einen eindeutigen Benutzernamen und eine eindeutige E-Mail-Adresse hat.
+\section{Technische Lösungen}
+    In diesem Abschnitt werden die technischen Lösungen, die in der Entwicklung von "The Math Wizard" verwendet wurden, detailliert beschrieben.
 
-\section{Installationshinweise}
+    \subsection{PHP und MVC-Architektur}
+        Das Backend der Anwendung wurde mit der Programmiersprache PHP implementiert. Um eine saubere und strukturierte Organisation des Codes zu gewährleisten, kam die MVC-Architektur (Model-View-Controller) zum Einsatz. Dies ermöglicht es, die Steuerung, die Datenverwaltung und die Darstellung voneinander zu trennen und durch den Controller zu steuern.
 
-\section{Fazit und Reflektion}
+    \subsection{MariaDB}
+        Als Datenbankmanagement-System wurde MariaDB (Version 10.6.11) verwendet. Diese Datenbank ermöglicht es, Nutzerdaten sicher zu speichern und zu verwalten. Es ermöglicht das Anlegen, Speichern, Ändern und Löschen von Informationen und Daten.
 
+    \subsection{JavaScript und rot.js}
+        Das Spiel selbst wurde mit JavaScript, der Bibliothek rot.js (Version 0.5.0) und Quelltext und Design Anteilen von RBB entwickelt. Dies ermöglichte die Erstellung eines Roguelike-Spiels mit zufällig generierten Levels und einem Kampfsystem, das auf dem Lösen von Multiplikationsaufgaben basiert. Die Bibliothek rot.js ermöglichte es, die Benutzerinteraktion im Spiel und die Generierung von Levels und Gegnern zu steuern. Die Anteile von RBB erlaubten ein schnelleres Umsetzen einer ansprechenden Benutzeroberfläche.
+
+    \subsection{HTML, CSS und NES CSS}
+        Für die Gestaltung der Webseite wurden HTML5, CSS3 und zur flexiblen Anpassung an mobile Endgeräte auch Javascript verwendet. Das Design des Spiels wurde mit NES CSS gestaltet, um eine authentische Retro-Optik zu erreichen.
+
+    \subsection{HTML Canvas}
+        Die Grafiken im Spiel werden mithilfe von HTML Canvas dargestellt. Dies ermöglicht es, die Grafiken im Spiel dynamisch zu generieren und zu verändern. Die verwendeten Grafik und das Tileset sind Erweiterung des Tilesets von "0x72"\footnote{https://0x72.itch.io/16x16-dungeon-tileset}.
+
+\section{Installationsanleitung und -hinweise}
+    In diesem Abschnitt wird beschrieben, wie The Math Wizard installiert werden kann.
+    \subsection{Voraussetzungen}
+        Um The Math Wizard erfolgreich zu installieren, sind folgende Voraussetzungen erforderlich:
+        \begin{itemize}
+        \item Ein Webserver, z.B. Apache oder Nginx
+        \item Gegebenenfalls ein Proxyserver, z.B. HAProxy
+        \item PHP in mindestens Version 7.4
+        \item MariaDB ab Version 10.1
+        \end{itemize}
+    \subsection{Schritte zur Installation}
+        Folgende Schritte sind erforderlich, um The Math Wizard erfolgreich zu installieren:
+        \begin{enumerate}
+        \item Klonen Sie das GitHub-Repository unter https://github.com/PatrykHegenberg/TheMathWizard
+        \item Konfigurieren Sie Ihren Webserver und Proxyserver entsprechend, um auf die Anwendung zugreifen zu können.
+        \item Erstellen Sie einen Datenbanknutzer und gewähren Sie im nötigen Rechte auf der Datenbank
+        \item Spielen Sie den im Repository vorhanden Datenbankdump ein.
+        \item Konfigurieren Sie die Verbindung zur Datenbank in der Datei "/config.php"
+        \item Starten Sie den Webserver und Proxyserver.
+        \item Die Anwendung sollte nun unter der angegebenen URL erreichbar sein.
+        \end{enumerate}
+    \subsection{Fehlerbehebung}
+        Falls bei der Installation Probleme auftreten, überprüfen Sie bitte, ob alle Voraussetzungen erfüllt sind und stellen Sie sicher, dass die Schritte zur Installation korrekt ausgeführt wurden. Sollten die Probleme weiterhin bestehen, wenden Sie sich an den Entwickler oder suchen Sie Hilfe in der Dokumentation oder in Online-Communities.
+
+\section{Fazit und Reflexion}
+    In der Entwicklung von ''The Math Wizard'' habe ich wichtige Erkenntnisse und Erfahrungen gesammelt. Die größte Herausforderung war die Umsetzung des Spiels mit JavaScript unter Verwendung der Bibliothek rot.js, da die Arbeitsweise dieser Programmiersprache von den bisher durch mich verwendeten C-basierten Sprachen abweicht. Durch die Nutzung von Ressourcen wie dem Rot.js Tutorial von The RogueBasin\footnote{http://roguebasin.com/index.php/Rot.js\_tutorial} und Inspiration und Hilfe zur grafischen Umsetzung und Gestaltung von RBB und ''Introducing Javascript Game Development'', konnte ich das Spiel erfolgreich innerhalb des vorgegebenen Zeitrahmens realisieren. Durch den Einsatz von PHP und der MVC-Architektur konnte schnell ein funktionierendes Backend mit CRUD-Funktionalitäten erzeugt werden. Insgesamt konnten alle Anforderungen erfolgreich umgesetzt werden und ich habe viel gelernt. 
+    
+    In Bezug auf die Anwendbarkeit der erworbenen Kenntnisse und Fähigkeiten, sehe ich mich nun in der Lage, eine Webanwendung unter Einsatz von HTML, CSS, PHP und JavaScript umzusetzen. Das Integrieren einer Datenbank in den Kontext einer Webanwendung stellt nun keine Herausforderung mehr dar. Auch die Anwendung von MVC-Architektur erleichtert die Organisation und Wartung des Codes. Sollte die Entwicklung von "The Math Wizard" fortgesetzt werden, könnten weitere Funktionen wie Touch-Bedienung, unterschiedlich gestaltete Level, die Möglichkeit zum Eintausch von Münzen gegen Erweiterungen und Erweiterungen der Datenbankstruktur zur Abbildung von Klassenverbänden und Leistungsübersichten für Lehrkräfte in die Web-Anwendung eingebunden werden.
+\printbibliography
 \end{document}
