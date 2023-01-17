@@ -1,0 +1,73 @@
+%!TeX encoding=utf8
+\documentclass[fontsize:11pt]{article}
+\usepackage{graphicx}
+\usepackage{blindtext}
+
+
+%---Language and umlauts
+\usepackage[utf8]{inputenc}       % UTF-8 Kodierung - ä, ö, ü, ß direkt eingeben
+\renewcommand\familydefault{\sfdefault}
+\usepackage[ngerman]{babel}                      % Neue deutsche Rechtschreibung
+\usepackage[expansion=true, protrusion=true]{microtype} % Bessere Silbentrennung
+%\usepackage[scaled]{helvet}
+
+% Papierformat: DIN-A4, mit wenig Rand
+\usepackage[
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm,
+	includefoot,
+	footskip=8mm
+	]{geometry}
+
+
+% Literaturverzeichnis	
+\usepackage[style=alphabetic,sorting=ynt,backend=biber]{biblatex}
+
+% Zeilenabstand
+\usepackage[onehalfspacing]{setspace}
+
+% Definition der Kopf- und Fußzeile
+\usepackage[headsepline,automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\setlength{\headheight}{2.5\baselineskip}
+\setlength{\footheight}{1\baselineskip}
+\ihead[]{}
+\chead[]{\author}
+\ohead[]{Datum: \today}
+\cfoot[]{\pagemark}
+
+\usepackage{titlesec}
+\usepackage{csquotes}
+
+%titlepage information
+\title{Entwicklung einer Lernplattform für Grundschüler}
+\author{Patryk Hegenberg}
+\date{\today}
+\addbibresource{Literatur.bib}
+
+
+\begin{document}
+\maketitle
+Eingereciht von: 
+\thispagestyle{empty}
+  
+\section{Einleitung}
+
+        
+\section{Anforderung}
+
+        
+\section{Aufbau der Lösung}
+
+\section{Aufbau der Datenbank}
+ 
+\section{Technische Lösung}
+
+\section{Installationshinweise}
+
+\section{Fazit und Reflektion}
+
+\end{document}

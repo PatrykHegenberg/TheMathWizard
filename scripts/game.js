@@ -113,51 +113,35 @@
   // www.roguebasin.com/index.php?title=Rot.js_tutorial,_part_1
 
   const Game = {
-    // this is the ROT.js display handler
     display: null,
-    // this is our map data
     map: {},
-    // map of all items
     items: {},
-    // reference to the ROT.js engine which
-    // manages stuff like scheduling
     engine: null,
-    // schedules events in the game for ROT.js
     scheduler: null,
-    // reference to the player object
     player: null,
-    // reference to the game monsters array
     monsters: null,
     door: null,
-    // arrow handler
-    lastArrow: null, // arrow keys held
-    arrowInterval: null, // arrow key repeat
-    arrowListener: null, // registered listener for arrow event
-    // clean up this game instance
+    lastArrow: null, 
+    arrowInterval: null, 
+    arrowListener: null, 
     cleanup: cleanup,
     playerAllowedToMove: true,
   };
 
-  // this gets called by the menu system
-  // to launch the actual game
   function init(game) {
     game.map = {};
     game.items = {};
-    // first create a ROT.js display manager
     game.display = new ROT.Display(tileOptions);
     resetCanvas(game.display.getContainer());
 
     generateMap(game, count);
 
-    // let ROT.js schedule the player and monster entities
     game.scheduler = new ROT.Scheduler.Simple();
     game.scheduler.add(game.player, true);
     game.monsters.map((m) => game.scheduler.add(m, true));
 
-    // render the stats hud at the bottom of the screen
     renderStats(game.player.stats);
 
-    // kick everything off
     game.engine = new ROT.Engine(game.scheduler);
     game.engine.start();
     count = 1;
@@ -177,28 +161,20 @@
     };
     generateMap(game, stage);
 
-    // let ROT.js schedule the player and monster entities
     game.scheduler = new ROT.Scheduler.Simple();
     game.scheduler.add(game.player, true);
     game.monsters.map((m) => game.scheduler.add(m, true));
 
-    // render the stats hud at the bottom of the screen
     game.player.stats = stats;
     renderStats(game.player.stats);
 
-    // kick everything off
     game.engine = new ROT.Engine(game.scheduler);
     game.engine.start();;
   }
 
-  // this gets called at the end of the game when we want
-  // to exit back out and clean everything up to display
-  // the menu and get ready for next round
   function destroy(game) {
-    // remove all listening event handlers
     removeListeners(game);
 
-    // tear everything down
     if (game.engine) {
       game.engine.lock();
       game.display = null;
@@ -213,18 +189,13 @@
       game.stairs = null;
     }
 
-    // hide the toast message
     hideToast(true);
-    // close out the game screen and show the title
     showScreen("title");
   }
 
-  // this generates the game map
   function generateMap(game, stage) {
     const digger = new ROT.Map.Digger(tileOptions.width, tileOptions.height);
-    // list of floor tiles that can be walked on
     const freeCells = [];
-    // list of non-floor tiles that can't be traversed
     const zeroCells = [];
 
     const digCallback = function (x, y, value) {
@@ -251,7 +222,6 @@
       game.monsters.push(createBeing(makeMonster, freeCells));
     }
 
-    // draw the map and items
     for (let key in game.map) {
       drawTile(game, key);
     }
@@ -347,7 +317,6 @@
     }
   }
 
-  // both the player and monster initial position is set
   function createBeing(what, freeCells) {
     if (what == makePlayer) {
       const pos = posFromKey(freeCells[0]);
@@ -365,18 +334,13 @@
    *** the player ***
    ******************/
 
-  // creates a player object with position, and stats
   function makePlayer(x, y) {
     return {
-      // player's position
       _x: x,
       _y: y,
       character: "@",
       name: statsOfPlayer['username'].replace('"',''),
-      // the player's stats
       stats: { hp: 10, xp: 0, gold: 0 },
-      // the ROT.js scheduler calls this method when it is time
-      // for the player to act
       act: () => {
         Game.engine.lock();
         if (!Game["arrowListener"]) {
@@ -387,7 +351,6 @@
     };
   }
 
-  // this method gets called by the `movePlayer` function
   function checkItem(entity) {
     const key = entity._x + "," + entity._y;
     if (key == Game.door) {
@@ -421,7 +384,6 @@
       return;
     }
 
-    // check if we've hit the monster
     const hitMonster = monsterAt(x, y);
     if (hitMonster) {
       setTimeout(function () {
@@ -432,20 +394,16 @@
 
       drawTile(Game, p._x + "," + p._y, p);
 
-      // update the player's coordinates
       p._x = x;
       p._y = y;
 
-      // re-draw the player
       for (let key in Game.map) {
         drawTile(Game, key);
       }
-      // re-locate the game screen to center the player
       rescale(x, y, Game);
       window.removeEventListener("arrow", arrowEventHandler);
       Game.engine.unlock();
       sfx["step"].play();
-      // check if the player stepped on an item
       checkItem(p);
     }
   }
@@ -454,7 +412,6 @@
    *** The monster ***
    *******************/
 
-  // basic ROT.js entity with position and stats
   function makeMonster(x, y) {
     if (count === 5) {
       return {
@@ -478,13 +435,11 @@
         };
       } else {
         return {
-        // monster position
           _x: x,
           _y: y,
           character: "a",
           name: "Kleiner Orc",
           stats: { hp: 3 },
-          // called by the ROT.js scheduler
           act: monsterAct,
         };
       }
@@ -540,7 +495,6 @@
       : null;
   }
 
-  // if the monster is dead remove it from the game
   function checkDeath(m) {
     if (m.stats.hp <= 0) {
       if (m == Game.player) {
@@ -556,7 +510,6 @@
     }
   }
 
-  // remove a monster from the game
   function removeMonster(m) {
     const key = m._x + "," + m._y;
     Game.scheduler.remove(m);
@@ -567,7 +520,6 @@
   /******************************
    *** combat/win/lose events ***
    ******************************/
-  // this is how the player fights a monster
   function checkSolution(solution, answer) {
     if (solution == answer) {
       return true;
@@ -661,7 +613,6 @@
     Game.engine.unlock();
   }
 
-  // this gets called when the player wins the game
   function win() {
     Game.engine.lock();
     Game.player.stats.xp += 10;
@@ -670,17 +621,13 @@
         sfx["win"].play();
       }, 100 * i);
     }
-    // set our stats for the end screen
     setEndScreenValues(Game.player.stats.xp, Game.player.stats.gold);
-    // tear down the game
     destroy(Game);
     showScreen("win");
   }
 
-  // this gets called when the player loses the game
   function lose() {
     Game.engine.lock();
-    // change the player into a tombstone tile
     const p = Game.player;
     p.character = "T";
     drawTile(Game, p._x + "," + p._y);
@@ -688,7 +635,6 @@
     sfx["lose"].play();
     setTimeout(function () {
       setEndScreenValues(Game.player.stats.xp, Game.player.stats.gold);
-      // tear down the game
       destroy(Game);
       showScreen("lose");
     }, 2000);
@@ -704,7 +650,6 @@
   const $$ = document.querySelectorAll.bind(document);
   NodeList.prototype.forEach = Array.prototype.forEach;
 
-  // this code resets the ROT.js display canvas
   function resetCanvas(el) {
     $("#canvas").innerHTML = "";
     $("#canvas").appendChild(el);
@@ -758,7 +703,6 @@
     }
   }
 
-  // hides all screens and shows the requested screen
   function showScreen(which, ev) {
     ev && ev.preventDefault();
     const el = $("#" + which);
@@ -776,7 +720,6 @@
     }
   }
 
-  // set the end-screen message
   function setEndScreenValues(xp, gold) {
     $$(".xp-stat").forEach((el) => (el.textContent = Math.floor(xp)));
     $$(".gold-stat").forEach((el) => (el.textContent = gold));
@@ -803,7 +746,6 @@
     xhr.send(json);
   }
 
-  // updates the stats listed at the bottom of the screen
   function renderStats(stats) {
     const st = $("#hud");
     st.innerHTML = "";
@@ -859,7 +801,6 @@
     }
   }
 
-  // create an HTML element
   function el(tag, attrs, children) {
     const node = document.createElement(tag);
     for (a in attrs) {
@@ -875,13 +816,11 @@
     return node;
   }
 
-  // add an HTML element to a parent node
   function attach(node, el) {
     node.appendChild(el);
     return el;
   }
 
-  // remove an element from the dom
   function rmel(node) {
     node.parentNode.removeChild(node);
   }
@@ -972,12 +911,10 @@
    *** Startup ***
    ***************/
 
-  // this code is called at load time and sets the game title
   document.querySelectorAll(".game-title-text").forEach(function (t) {
     t.textContent = gametitle;
   });
 
-  // listen for the start game button
   $("#play").addEventListener(clickevt, startGame);
   
   if (w["rbb"]) {

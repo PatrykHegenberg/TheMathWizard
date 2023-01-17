@@ -75,8 +75,8 @@
             <a href="https://ondras.github.io/rot.js/hp/"
                target="_blank">ROT.js</a></li>
           <li>Tiles by
-            <a href="https://kenney.nl/assets/micro-roguelike"
-               target="_blank">kenney.nl</a></li>
+            <a href="https://0x72.itch.io/16x16-dungeon-tileset"
+               target="_blank">0x72</a></li>
           <li>Styles from
             <a href="https://nostalgic-css.github.io/NES.css/"
                target="_blank">NESS.css</a></li>
@@ -86,6 +86,8 @@
           <li>Pixel coin by
             <a href="https://opengameart.org/content/spinning-pixel-coin-0"
                target="_blank">irmirx</a></li>
+          <li>Parts of the Gamelogic and Design by
+            <a href="http://roguebasin.com/index.php/Roguelike_Browser_Boilerplate">chr15m</a</li>
         </ul>
       </div>
       <button class="nes-btn is-success action">Ok</button>
@@ -106,7 +108,6 @@
     <div id="win" class="screen modal">
       <p class="nes-container is-rounded is-dark">Win!</p>
       <div class="nes-container is-rounded is-dark">
-        <p><div class="sprite amulet"></div></p>
         <p>Du hast das Spiel gewonnen.</p>
         <p>Du hast <span class="gold-stat"></span> Gold und <span class="xp-stat"></span> XP erhalten.</p>
       </div>
@@ -117,7 +118,6 @@
     <div id="lose" class="screen modal">
       <p>Lose!</p>
       <div class="nes-container is-rounded is-dark">
-        <div class="sprite tomb"></div>
         <p>Oh nein, die Monster haben dich erwischt.</p>
         <p>Du bist tot.</p>
         <p>Du hast <span class="gold-stat"></span> Gold und <span class="xp-stat"></span> XP erhalten.</p>

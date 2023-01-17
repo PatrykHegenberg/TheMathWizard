@@ -52,8 +52,6 @@ a:hover {
   text-decoration: none;
 }
 
-/*** NES.css overrides ***/
-
 .nes-container.is-rounded.is-dark {
   border-image-slice: 9 9 9 9 fill;
   border-image-source: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAphgAAKYYBIuzfjAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABgSURBVEiJY2AYBQQAIzGK/v///x+rZkZGgvqZSHURqYDmFrDgkkAOFikpZYJqcAXX0A8iFG8REyy4wLNndxGGIgXX0A+iUQsIApxlCTEpClfKQQbDOIiQwcgurkcBQQAARlMedugABy8AAAAASUVORK5CYII=');
@@ -64,8 +62,6 @@ a:hover {
 .nes-container.is-fake-rounded.is-dark::after {
   background: none;
 }
-
-/*** screens ***/
 
 .screen {
   height: 100%;
@@ -89,7 +85,7 @@ a:hover {
 }
 
 #title {
-  background-image: url(./../images/bg.png);
+  background-image: url(./../images/HeroBanner.png);
   background-size: cover;
   animation: 20s para infinite ease;
 }
@@ -279,22 +275,6 @@ a:hover {
   background-position: -8px -48px;
 }
 
-
-.grow-fade {
-  animation: grow-fade 2s linear;
-}
-
-@keyframes grow-fade {
-  from {
-    transform:  translate(0px, 0px) scale(8);
-    opacity: 0.5;
-  }
-  to {
-    transform: translate(0px, 0px) scale(16);
-    opacity: 0;
-  }
-}
-
 #play {
   width: 400px;
   max-width: 90%;
@@ -304,8 +284,6 @@ a:hover {
   background: url(./../images/01coin.gif);
   background-size: 20%;
 }
-
-/*** HUD ***/
 
 #hud {
   position: absolute;
@@ -346,8 +324,6 @@ a:hover {
      bottom: 72px;
    }
 }
-
-/*** CSS animations ***/
 
 .fade-in {
   animation: fade-in 0.8s;
