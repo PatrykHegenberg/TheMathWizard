@@ -1,9 +1,9 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
 
-<div class="container profile">
-  <div>
-    <div class="nes-container">
+<div class="profile">
+  <div style="padding: 20px;">
+    <div class="container3">
       <section class="message-list">
         <section class="message -left">
           <i class="nes-bcrikko"></i>
@@ -12,7 +12,7 @@
           </div>
         </section>
       </section>
-      <div class="nes-container">
+      <div class="container3">
         <div class="text-center">
           <h3>Was möchtest du tun?</h3>
         </div>
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="nes-container with-title">
+    <div class="container3">
       <span class="title">Dein Fortschritt</span>
       <span>Du bist aktuell Level: <?php echo $stats['level'] ?> </span>
       <br>
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="nes-container">
+    <div class="container4">
       <div>
         <a href="/delete" class="nes-btn is-error">Account löschen</a>
       </div>

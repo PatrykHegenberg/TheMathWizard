@@ -1,9 +1,9 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
 
-<div class="container login">
-  <div class="nes-container">
-    <form action="/login" method="POST" class="container">
+<div class="login">
+  <div class="container1">
+    <form action="/login" method="POST" class="container form">
       <div>
         <h2>Melde dich mit deinem Konto an.</h2>
         <p>

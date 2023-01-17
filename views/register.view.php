@@ -1,8 +1,8 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
-<div class="container register">
-  <div class="nes-container">
-<form action="/register" method="POST">
+<div class="register">
+  <div class="container2">
+<form action="/register" method="POST" class="form">
 
   <div class="nes-field">
     <label for="username">Username</label>
