@@ -99,7 +99,7 @@
       <div class="nes-container is-rounded is-dark">
         <p>Kämpfe dich durch denn Dungeon und finde den Weg in den untersten Raum. Durch das Lösen der Matheaufgaben fügst deinen Gegnern Schaden zu.
         Bei einer falschen Antwort erleidest du Schaden.</p>
-        <p>Benutze die Pfeiltasten um dich zu bewegen.</p>
+        <p>Benutze die WASD um dich zu bewegen.</p>
       </div>
       <button class="nes-btn is-success action">Ok</button>
     </div>
@@ -126,7 +126,7 @@
     </div>
     
     <!--Combat screen-->
-    <div id="combat" class="screen modal">
+    <div id="combat" class="screen modal combat">
       <p>Kampf!</p>
       <div class="nes-container is-rounded is-dark">
         <p id>Was ist?</p>

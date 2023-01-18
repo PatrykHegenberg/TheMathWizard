@@ -95,13 +95,13 @@
   }
 
   const keyMap = {
-    38: 0,
+    87: 0, //38->Hoch
     33: 1,
-    39: 2,
+    68: 2, //30->Rechts
     34: 3,
-    40: 4,
+    83: 4, //40->Runter
     35: 5,
-    37: 6,
+    65: 6, //37->Links
     36: 7,
   };
 
@@ -831,6 +831,7 @@
 
   function keyHandler(ev) {
     const code = ev.keyCode;
+    console.log(code);
     if (code == 187 || code == 189) {
       ev.preventDefault();
       return;

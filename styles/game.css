@@ -83,7 +83,12 @@ a:hover {
   height: 100%;
   background-color: #422835;
 }
-
+.combat {
+  margin: auto;
+  width: 50%;
+  height: 75%;
+  background-color: #422835;
+}
 #title {
   background-image: url(./../images/HeroBanner.png);
   background-size: cover;
