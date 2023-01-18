@@ -6,7 +6,7 @@
             <img class="asset-dark" src="./images/icon.png" alt="Logo">
           </a>
         </div>
-        <div class="footer-copyright">&copy; 2018 Patryk Hegenberg, all rights reserved</div>
+        <div class="footer-copyright">&copy; 2023 Patryk Hegenberg, all rights reserved</div>
       </div>
     </div>
   </footer>

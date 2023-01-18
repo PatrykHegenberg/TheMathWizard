@@ -164,7 +164,7 @@ p {
 
 .site-header {
   position: relative;
-  padding: 24px 0;
+  padding: 12px 0;
   z-index: 2;
 }
 .site-header-inner {
@@ -413,8 +413,8 @@ main {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 .nes-container {
@@ -462,9 +462,10 @@ main {
 }
 .footer-copyright {
   flex: none;
-  width: 100%;
+  width: 80%;
   display: inline-flex;
   justify-content: center;
+  align-items: center;
 }
 .register {
   height: 1200px;
@@ -482,6 +483,8 @@ main {
   background-color: #2e1e26;
   margin: auto;
   padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px #433e4c;
 }
 
 .nes-field {
@@ -500,6 +503,8 @@ main {
   justify-content: center;
   text-align: center;
   background-color: #3f2a34;
+  border-radius: 5px;
+  box-shadow: #3f2a34;
 }
 .container .login {
   display: flex;

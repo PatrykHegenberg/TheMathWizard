@@ -2,7 +2,7 @@
 <?php require('partials/nav.php') ?>
 
 <div class="profile">
-  <div style="padding: 20px;">
+  <div style="padding: 20px; border-radius: 5px; box-shadow: 0 0 4px #433e4c; margin-top: 20px; margin-bottom: 20px; background-color: #2e1e26;">
     <div class="container3">
       <section class="message-list">
         <section class="message -left">

@@ -1,6 +1,6 @@
  <body class="is-boxed">
    <div class="body-wrap boxed-container">
-     <header class="site-header">
+     <header class="site-header has-bottom-divider">
        <div class="container">
        <nav>
          <div class="site-header-inner">
