@@ -1,7 +1,7 @@
 (function (w) {
   var playerStats = document.getElementById("playerStats").innerHTML;
 
-  function convertData(stats) {
+  const convertData = (stats) => {
     var player = {};
     stats = stats.replace("'", "").replace("{","").replace("}","");
     stats = stats.split(",");
@@ -25,8 +25,8 @@
    *** resources ***
    *****************/
 
-  // This tileset is from kenney.nl
-  // It's the "microrogue" tileset
+  // This tileset is from 0x72
+  // It's the "16x16 DungeonTileset" tileset
 
   const tileSet = document.createElement("img");
   tileSet.src = "./../images/16x16DungeonTileset.png";
@@ -60,8 +60,6 @@
     height: 40,
   };
 
-  //const usePointer = true;
-  //const useArrows = true;
   const touchOffsetY = -20; // move the center by this much
   const scaleMonitor = 3; // scale computer screens by this much
   const turnLengthMS = 200; // shortest time between turns
@@ -128,7 +126,7 @@
     playerAllowedToMove: true,
   };
 
-  function init(game) {
+  const init = (game) => {
     game.map = {};
     game.items = {};
     game.display = new ROT.Display(tileOptions);
@@ -147,7 +145,7 @@
     count = 1;
   }
 
-  function nextStage(game, stage, stats) {
+  const nextStage = (game, stage, stats) => {
     game.map = {};
     game.items = {};
     game.display = new ROT.Display(tileOptions);
@@ -172,7 +170,7 @@
     game.engine.start();;
   }
 
-  function destroy(game) {
+  const destroy = (game) => {
     removeListeners(game);
 
     if (game.engine) {
@@ -246,13 +244,13 @@
     }
   }
 
-  function takeFreeCell(freeCells) {
+  const takeFreeCell = (freeCells) => {
     const index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
     const key = freeCells.splice(index, 1)[0];
     return key;
   }
 
-  function posFromKey(key) {
+  const posFromKey = (key) => {
     const parts = key.split(",");
     const x = parseInt(parts[0]);
     const y = parseInt(parts[1]);
@@ -334,7 +332,7 @@
    *** the player ***
    ******************/
 
-  function makePlayer(x, y) {
+  const makePlayer = (x, y) => {
     return {
       _x: x,
       _y: y,
@@ -350,16 +348,11 @@
       },
     };
   }
-
-  function checkItem(entity) {
+  const checkItem = (entity) => {
     const key = entity._x + "," + entity._y;
     if (key == Game.door) {
-      if(count < 5) {
-        nextStage(Game, ++count, Game.player.stats);
-      } else {
-      win();
-      }
-    } else if (key == Game.stairs) {
+      (count < 5 ? nextStage(Game, ++count, Game.player.stats) : win());
+    } else if (key == Game.stairs && Game.monsters.length == 0) {
       nextStage(Game, ++count, Game.player.stats);
     }else if (Game.items[key] == "g") {
       Game.player.stats.gold += 1;
@@ -370,13 +363,12 @@
     }
     drawTile(Game, key);
   }
-
-  function movePlayer(dir) {
+  const movePlayer = (dir) => {
     const p = Game.player;
     return movePlayerTo(p._x + dir[0], p._y + dir[1]);
   }
 
-  function movePlayerTo(x, y) {
+  const movePlayerTo = (x, y) => {
     const p = Game.player;
 
     const newKey = x + "," + y;
@@ -453,14 +445,14 @@
     const map = Game.map;
     const display = Game.display;
 
-    const passableCallback = function (x, y) {
+    const passableCallback = (x, y) => {
       return walkable.indexOf(map[x + "," + y]) != -1;
     };
     const astar = new ROT.Path.AStar(p._x, p._y, passableCallback, {
       topology: 4,
     });
     const path = [];
-    const pathCallback = function (x, y) {
+    const pathCallback = (x, y) => {
       path.push([x, y]);
     };
     astar.compute(m._x, m._y, pathCallback);
@@ -489,7 +481,7 @@
     }
   }
 
-  function playerAt(x, y) {
+  const playerAt = (x, y) => {
     return Game.player && Game.player._x == x && Game.player._y == y
       ? Game.player
       : null;
@@ -520,12 +512,8 @@
   /******************************
    *** combat/win/lose events ***
    ******************************/
-  function checkSolution(solution, answer) {
-    if (solution == answer) {
-      return true;
-    } else {
-      return false;
-    }
+  const checkSolution = (solution, answer) => {
+    return solution == answer;
   }
 
    async function setupButtons(answerValue) {
@@ -544,8 +532,7 @@
     }
     if (random1 < 1) {
       random1 = 1 + randomValue(0,2);
-    }
-    if (random2 < 1) {
+    } else if (random2 < 1) {
       random2 = 1 + randomValue(0, 2);
     }
     if (randomVar === 1) {
@@ -613,7 +600,7 @@
     Game.engine.unlock();
   }
 
-  function win() {
+  const win = () => {
     Game.engine.lock();
     Game.player.stats.xp += 10;
     for (let i = 0; i < 5; i++) {
@@ -626,7 +613,7 @@
     showScreen("win");
   }
 
-  function lose() {
+  const lose = () => {
     Game.engine.lock();
     const p = Game.player;
     p.character = "T";
@@ -650,7 +637,7 @@
   const $$ = document.querySelectorAll.bind(document);
   NodeList.prototype.forEach = Array.prototype.forEach;
 
-  function resetCanvas(el) {
+  const resetCanvas = (el) => {
     $("#canvas").innerHTML = "";
     $("#canvas").appendChild(el);
     window.onkeydown = keyHandler;
@@ -658,7 +645,7 @@
     showScreen("game");
   }
 
-  function rescale(x, y, game) {
+  const rescale = (x, y, game) => {
     const c = $("canvas");
     const scale = scaleMonitor;
     const offset = game.touchScreen ? touchOffsetY : 0;
@@ -689,7 +676,7 @@
     }
   }
 
-  function removeListeners(game) {
+  const removeListeners = (game) => {
     if (game.engine) {
       game.lastArrow = null;
       clearInterval(game.arrowInterval);
@@ -703,7 +690,7 @@
     }
   }
 
-  function showScreen(which, ev) {
+  const showScreen = (which, ev) => {
     ev && ev.preventDefault();
     const el = $("#" + which);
     const actionbutton = $("#" + which + ">.action");
@@ -720,11 +707,13 @@
     }
   }
 
-  function setEndScreenValues(xp, gold) {
+  const setEndScreenValues = (xp, gold) => {
     $$(".xp-stat").forEach((el) => (el.textContent = Math.floor(xp)));
     $$(".gold-stat").forEach((el) => (el.textContent = gold));
+
     statsOfPlayer["coins"] += gold;
     statsOfPlayer["username"] = Game.player.name.trim().replace('"','');
+
     if ((statsOfPlayer['xp'] + xp) > 150) {
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]) + 1;
       statsOfPlayer["xp"] += xp;
@@ -733,6 +722,7 @@
       statsOfPlayer["level"] = Number(statsOfPlayer["level"]);
       statsOfPlayer["xp"] += xp;
     }
+
     var json = JSON.stringify(statsOfPlayer);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/updateData", true);
@@ -742,11 +732,10 @@
         console.log(this.responseText);
     }
     }
-    console.log(json);
     xhr.send(json);
   }
 
-  function renderStats(stats) {
+  const renderStats = (stats) => {
     const st = $("#hud");
     st.innerHTML = "";
     for (let s in stats) {
@@ -754,7 +743,7 @@
     }
   }
 
-  function battleMessage(messages) {
+  const battleMessage = (messages) => {
     const components = messages.reduce(function (msgs, m) {
       return msgs
         .concat(
@@ -768,7 +757,7 @@
     return el("span", {}, components);
   }
 
-  function toast(message) {
+  const toast = (message) => {
     const m = $("#message");
     if (
       Game.scheduler._current == Game.player ||
@@ -785,7 +774,7 @@
     }
   }
 
-  function hideToast(instant) {
+  const hideToast = (instant) => {
     const m = $("#message");
     if (instant) {
       m.classList.remove("show");
@@ -801,7 +790,7 @@
     }
   }
 
-  function el(tag, attrs, children) {
+  const el = (tag, attrs, children) => {
     const node = document.createElement(tag);
     for (a in attrs) {
       node[a] = attrs[a];
@@ -816,12 +805,12 @@
     return node;
   }
 
-  function attach(node, el) {
+  const attach = (node, el) => {
     node.appendChild(el);
     return el;
   }
 
-  function rmel(node) {
+  const rmel = (node) => {
     node.parentNode.removeChild(node);
   }
 
@@ -831,7 +820,6 @@
 
   function keyHandler(ev) {
     const code = ev.keyCode;
-    console.log(code);
     if (code == 187 || code == 189) {
       ev.preventDefault();
       return;

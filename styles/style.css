@@ -497,6 +497,32 @@ main {
   text-align: center;
   background-color: #3f2a34;
 }
+
+.learn {
+  height: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-between;
+  text-align: center;
+  align-items: flex-start;
+  background-color: #3f2a34;
+  border-radius: 5px;
+  box-shadow: #3f2a34;
+}
+.learnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 150px;
+  background-color: #2e1e26;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px #433e4c
+}
 .profile {
   height: 1200px;
   display: flex;

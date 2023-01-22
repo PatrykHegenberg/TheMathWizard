@@ -29,7 +29,7 @@
           <div class="feature is-revealing">
             <div class="feature-inner">
               <div class="feature-icon">
-                <img class="asset-dark" src="./images/weapon_sword_ruby.png" alt="Feature 01">
+                <img src="./images/weapon_sword_ruby.png" alt="Feature 01">
               </div>
               <div class="feature-content">
                 <h3 class="feature-title mt-0">Immer neue Level</h3>
@@ -40,7 +40,7 @@
           <div class="feature is-revealing">
             <div class="feature-inner">
               <div class="feature-icon">
-                <img class="asset-dark" src="./images/monster_imp.png" alt="Feature 02">
+                <img src="./images/monster_imp.png" alt="Feature 02">
               </div>
               <div class="feature-content">
                 <h3 class="feature-title mt-0">Angepasste Schwierigkeit</h3>
@@ -51,7 +51,7 @@
           <div class="feature is-revealing">
             <div class="feature-inner">
               <div class="feature-icon">
-                <img class="asset-dark" src="./images/npc_knight_green.png" alt="Feature 03">
+                <img src="./images/npc_knight_green.png" alt="Feature 03">
               </div>
               <div class="feature-content">
                 <h3 class="feature-title mt-0">Fokus auf das was zählt</h3>
@@ -62,7 +62,7 @@
           <div class="feature is-revealing">
             <div class="feature-inner">
               <div class="feature-icon">
-                <img class="asset-dark" src="./images/monster_necromancer.png" alt="Feature 04">
+                <img src="./images/monster_necromancer.png" alt="Feature 04">
               </div>
               <div class="feature-content">
                 <h3 class="feature-title mt-0">Lernfortschritt immer im Blick</h3>

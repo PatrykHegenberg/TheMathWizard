@@ -17,7 +17,7 @@
           <h3>Was möchtest du tun?</h3>
         </div>
         <div>
-          <!--<a href="/learn" class="<?= urlIs("/learn") ?> nes-btn">Lernen</a>-->
+          <a href="/learn" class="<?= urlIs("/learn") ?> nes-btn">Lernen</a>
           <a href="/game" class="<?= urlIs("/game") ?> nes-btn">Üben</a>
         </div>
       </div>

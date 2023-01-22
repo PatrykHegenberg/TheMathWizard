@@ -87,7 +87,7 @@
             <a href="https://opengameart.org/content/spinning-pixel-coin-0"
                target="_blank">irmirx</a></li>
           <li>Parts of the Gamelogic and Design by
-            <a href="http://roguebasin.com/index.php/Roguelike_Browser_Boilerplate">chr15m</a</li>
+            <a href="http://roguebasin.com/index.php/Roguelike_Browser_Boilerplate" target="_blank">chr15m</a></li>
         </ul>
       </div>
       <button class="nes-btn is-success action">Ok</button>

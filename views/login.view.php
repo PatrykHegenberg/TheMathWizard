@@ -19,7 +19,7 @@
       </div>
       <div class="container">
         <label>
-          <input type="checkbox" class="nes-checkbox is-dark" />
+          <input type="checkbox" name="remember" class="nes-checkbox is-dark" />
           <span>Angemeldet bleiben</span>
         </label>
         <div>
