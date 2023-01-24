@@ -62,10 +62,10 @@ class Database {
 
       header("Location: /profile");
     } else {
-      echo "Anmeldung fehlgeschlagen!";
+      echo '<script>alert("Anmeldung fehlgeschlagen!");</script>';
     }
   } else {
-    echo "Anmeldung fehlgeschlagen!";
+    echo '<script>alert("Anmeldung fehlgeschlagen!");</script>';
   } 
   }
 
