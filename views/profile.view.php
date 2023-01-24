@@ -1,6 +1,6 @@
 <?php require('partials/head.php') ?>
 <?php require('partials/nav.php') ?>
-
+<?php if (!($_SESSION['isAdmin'] == 1)) : ?>
 <div class="profile">
   <div style="padding: 20px; border-radius: 5px; box-shadow: 0 0 4px #433e4c; margin-top: 20px; margin-bottom: 20px; background-color: #2e1e26;">
     <div class="container3">
@@ -46,4 +46,31 @@
     </div>
   </div>
 </div>
+<?php else : ?>
+
+  <div class="profile">
+    <div style="padding: 20px; border-radius: 5px; box-shadow: 0 0 4px #433e4c; margin-top: 20px; margin-bottom: 20px; background-color: #2e1e26;">
+<div class="container3">
+<table style="display: flex; justify-content: center; align-items: center;">
+<tr class="has-top-divider"> 
+<th>Username</th>
+<th>Email-Adresse</th>
+<th>Level</th>
+</tr>
+<?php foreach($users as $user) {
+  echo '<tr class="has-top-divider" >' ;
+  echo "<th>". $user['username'] ."</th>"; 
+  echo "<th>". $user['email'] ."</th>";
+  echo "<th>". $user['level'] ."</th>";
+  echo "</tr>";
+
+}
+?>
+</tr>
+</table>
+
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
 <?php require('partials/footer.php') ?>

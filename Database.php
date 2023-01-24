@@ -58,7 +58,8 @@ class Database {
     
     if (password_verify($params[1], $stmt["password"])) {
       session_start();
-      $_SESSION["username"] = $stmt['username'];
+        $_SESSION["username"] = $stmt['username'];
+        $_SESSION["isAdmin"] = $stmt['isAdmin'];
 
       header("Location: /profile");
     } else {
@@ -67,6 +68,10 @@ class Database {
   } else {
     echo '<script>alert("Anmeldung fehlgeschlagen!");</script>';
   } 
+  }
+
+  public function getUsers($params = []) {
+    return $this->query("SELECT username, email, level FROM user WHERE username != :user", ['user' => $params])->get();
   }
 
   public function register($params = []) {
