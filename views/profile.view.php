@@ -62,7 +62,7 @@
   echo "<th>". $user['username'] ."</th>"; 
   echo "<th>". $user['email'] ."</th>";
   echo "<th>". $user['level'] ."</th>";
-  echo '<th><form method="POST" action="/deleteUser"><input name="username" type="hidden" value="'.$user['username'].'"><input type="submit" name="delete" value="Loeschen"></form></th>';
+  echo '<th><form method="POST" action="/deleteUser"><input name="username" type="hidden" value="'.$user['username'].'"><input type="submit" name="delete" value="Loeschen" class="nes-btn"></form></th>';
   echo "</tr>";
 
 }
