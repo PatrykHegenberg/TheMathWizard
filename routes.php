@@ -10,5 +10,6 @@ return[
     '/profile' => 'controllers/profile.php',
     '/logout' => 'controllers/logout.php',
     '/delete' => 'controllers/delete.php',
-    '/updateData' => 'controllers/updateData.php'
+    '/updateData' => 'controllers/updateData.php',
+    '/deleteUser' => 'controllers/deleteUser.php'
 ];

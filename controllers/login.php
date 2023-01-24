@@ -1,9 +1,7 @@
 <?php
 $heading = "Login";
-$username = "MatheApp";
-$password = "password";
 $config = require('config.php');
-$db = new Database($config['database'], $username, $password);
+$db = new Database($config['database'], $config['username'], $config['password']);
 
 if (isset($_POST["submit"])) {
   $db->login([$_POST["username"], $_POST["password"]]);
