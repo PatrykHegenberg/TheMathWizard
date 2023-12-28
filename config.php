@@ -2,7 +2,7 @@
 
 return [
     'database' => [
-    'host' => 'localhost',
+    'host' => 'db',
     'port' => 3306,
     'dbname' => 'MatheApp',
     'charset' => 'utf8mb4'

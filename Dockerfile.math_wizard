@@ -1,0 +1,18 @@
+# Verwende ein Basisimage mit PHP
+FROM php:8.2-cli
+
+# Setze das Arbeitsverzeichnis
+WORKDIR /app
+
+# Kopiere den Projektinhalt in das Arbeitsverzeichnis im Container
+COPY . .
+
+# Installiere die erforderlichen PHP-Erweiterungen
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Exponiere den Port, den der PHP-Server verwenden wird
+EXPOSE 8080
+
+# Starte den PHP-Server beim Containerstart
+CMD ["php", "-S", "0.0.0.0:8080"]
+

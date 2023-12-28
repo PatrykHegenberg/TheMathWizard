@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  web:
+    #image: math_wizard
+    build:
+      context: /home/pata/dev/WebProg/TheMathWizard
+      dockerfile: Dockerfile.math_wizard
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - mathwizard-network
+
+  db:
+    build:
+      context: /home/pata/dev/WebProg/TheMathWizard
+      dockerfile: Dockerfile.db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: MatheApp
+      MYSQL_USER: MatheApp
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./math_wizard_db_data:/var/lib/mysql
+    networks:
+      - mathwizard-network
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+    networks:
+      - mathwizard-network
+
+volumes:
+  math_wizard_db_data:
+
+networks:
+  mathwizard-network:
+    driver: bridge
