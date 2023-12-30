@@ -4,7 +4,6 @@ services:
   web:
     #image: math_wizard
     build:
-      context: /home/pata/dev/WebProg/TheMathWizard
       dockerfile: Dockerfile.math_wizard
     ports:
       - "8080:8080"
@@ -15,7 +14,6 @@ services:
 
   db:
     build:
-      context: /home/pata/dev/WebProg/TheMathWizard
       dockerfile: Dockerfile.db
     environment:
       MYSQL_ROOT_PASSWORD: password
